@@ -2,7 +2,7 @@
 // GitHub: vyslouzildenis-maker/shoptet-custom
 
 (function() {
-  var CDN = 'https://cdn.jsdelivr.net/gh/vyslouzildenis-maker/shoptet-custom@main/';
+  var CDN = 'https://cdn.jsdelivr.net/gh/Softema/biosimport@main/';
 
   document.addEventListener('DOMContentLoaded', function() {
     var path = window.location.pathname;
