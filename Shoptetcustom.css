@@ -116,10 +116,6 @@ input[type="submit"] {
     text-transform: uppercase !important;
     letter-spacing: 0.05em !important;
     font-size: 13px !important;
-    display: inline-flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    text-align: center !important;
 }
 
 .btn-cart:hover,
@@ -133,24 +129,6 @@ input[type="submit"]:hover {
     color: #1a1a1a !important;
 }
 
-/* Košík tlačítko v headeru */
-.header-cart-button,
-.cart-button,
-[class*="cart-btn"],
-.btn-secondary {
-    background-color: #f5a623 !important;
-    border-color: #f5a623 !important;
-    color: #1a1a1a !important;
-    border-radius: 10px !important;
-    font-weight: 700 !important;
-    display: inline-flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    gap: 8px !important;
-    padding: 10px 20px !important;
-    text-align: center !important;
-}
-
 /* Vyhledávání tlačítko */
 .search-form .btn-default,
 .search .btn-default,
@@ -162,17 +140,20 @@ input[type="submit"]:hover {
     font-weight: 700 !important;
     border-radius: 0 10px 10px 0 !important;
     text-transform: uppercase !important;
-    display: inline-flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    text-align: center !important;
-    min-width: 80px !important;
 }
 
 .search-form .btn-default:hover,
 .search .btn-default:hover {
     background-color: #d4891a !important;
     border-color: #d4891a !important;
+}
+
+/* Pobočky stránka – černý text */
+.branch-detail a.btn,
+.branch-detail .btn,
+[class*="branch"] a.btn,
+[class*="branch"] .btn {
+    color: #1a1a1a !important;
 }
 
 /* ============================================================
@@ -258,69 +239,41 @@ input[type="search"]:focus {
 }
 
 /* ============================================================
-   BENEFIT BANNER – full-width šedé pozadí + proužky
+   BENEFIT BANNER – šedé pozadí + proužky
    ============================================================ */
 
-/* Sekce která obaluje banner – musí být přes celou šířku */
-.benefitBanner-section,
-.benefit-banner,
-[class*="benefitBanner"],
 .benefitBanner {
     background-color: #f8f8f8 !important;
     border-top: 3px solid #f5a623 !important;
     border-bottom: 3px solid #f5a623 !important;
-    padding: 24px 0 !important;
+    padding: 20px 0 !important;
     margin: 0 !important;
-    /* Full-width trik */
-    width: 100vw !important;
-    position: relative !important;
-    left: 50% !important;
-    right: 50% !important;
-    margin-left: -50vw !important;
-    margin-right: -50vw !important;
-    box-sizing: border-box !important;
 }
 
-/* Vnitřní obsah banneru – zarovnání */
-.benefitBanner__list,
-.benefitBanner ul,
-.benefitBanner .list {
-    display: flex !important;
-    flex-wrap: wrap !important;
-    justify-content: space-around !important;
-    align-items: center !important;
-    max-width: 1200px !important;
-    margin: 0 auto !important;
-    padding: 0 20px !important;
-    list-style: none !important;
-    gap: 16px 0 !important;
-}
-
-/* Každá položka */
-.benefitBanner__item,
-.benefitBanner li {
+.benefitBanner__item {
     display: flex !important;
     align-items: center !important;
     gap: 14px !important;
-    flex: 0 0 auto !important;
 }
 
-/* Ikony – stejná velikost 52x52 */
-.benefitBanner__icon,
-.benefitBanner svg,
-.benefitBanner img {
+/* Ikony – stejná velikost */
+.benefitBanner__icon {
     width: 52px !important;
     height: 52px !important;
     min-width: 52px !important;
     flex-shrink: 0 !important;
-    object-fit: contain !important;
+}
+
+.benefitBanner__icon svg,
+.benefitBanner__icon img {
+    width: 52px !important;
+    height: 52px !important;
 }
 
 .benefitBanner__title {
     font-weight: 700 !important;
     font-size: 0.95em !important;
     color: #1a1a1a !important;
-    white-space: nowrap !important;
 }
 
 .benefitBanner__description {
