@@ -172,9 +172,31 @@ input[type="submit"]:hover,
    ============================================================ */
 
 .search-input,
-.query-input {
-    border-radius: 4px 0 0 4px !important;
+.query-input,
+input[type="search"],
+input[type="text"].search-input {
+    border-radius: 10px 0 0 10px !important;
     border-color: #dddddd !important;
+    border-right: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+/* Odstraní vnitřní čárky/obdélník u input:focus */
+.search-input:focus,
+.query-input:focus,
+input[type="search"]:focus {
+    border-color: #f5a623 !important;
+    box-shadow: none !important;
+    outline: none !important;
+}
+
+/* Celý wrapper vyhledávání */
+.search-form,
+.search-wrapper,
+.search {
+    border-radius: 10px !important;
+    overflow: hidden !important;
 }
 
 /* ============================================================
@@ -250,49 +272,68 @@ input[type="submit"]:hover,
     background-color: #f8f8f8 !important;
     border-top: 3px solid #f5a623 !important;
     border-bottom: 3px solid #f5a623 !important;
-    padding: 20px 0 !important;
+    padding: 24px 0 !important;
     margin: 0 !important;
     width: 100% !important;
+    box-sizing: border-box !important;
 }
 
-/* Odstraní mezeru mezi bannerem a proužkem */
-.benefitBanner + *,
-.homepage-carousel + .benefitBanner,
-.slick-slider + .benefitBanner {
+/* Odstraní mezeru mezi carousel a benefit bannerem */
+.benefitBanner,
+.benefitBanner ~ *:first-of-type {
     margin-top: 0 !important;
 }
 
-/* Carousel/banner těsně nad benefit lištou */
-.homepage-carousel,
-.main-carousel,
-[class*="carousel"],
-[class*="banner"] {
-    margin-bottom: 0 !important;
+/* Wrapper banneru přes celou šířku */
+.benefitBanner > *,
+.benefitBanner__wrapper,
+.benefitBanner .container,
+.benefitBanner .container-fluid {
+    max-width: 100% !important;
+    width: 100% !important;
+    padding: 0 40px !important;
+    box-sizing: border-box !important;
 }
 
-/* Ikony benefitů – stejná velikost */
-.benefitBanner__icon,
-.benefitBanner .icon,
-.benefitBanner img,
-.benefitBanner svg {
-    width: 40px !important;
-    height: 40px !important;
-    object-fit: contain !important;
-    flex-shrink: 0 !important;
+/* Proužky (borders) táhnout celou šířku */
+.benefitBanner::before,
+.benefitBanner::after {
+    content: '' !important;
+    display: block !important;
+    width: 100% !important;
 }
 
-/* Každá položka benefitu – zarovnaná výška */
+/* Každá položka benefitu – flex, zarovnaná */
 .benefitBanner__item,
 .benefitBanner .item,
 .benefitBanner li {
     display: flex !important;
     align-items: center !important;
-    gap: 12px !important;
+    gap: 14px !important;
+    flex: 1 !important;
+}
+
+/* Ikony – stejná velikost 48x48 */
+.benefitBanner__icon,
+.benefitBanner .icon,
+.benefitBanner img:not([src*="logo"]),
+.benefitBanner svg {
+    width: 48px !important;
+    height: 48px !important;
+    min-width: 48px !important;
+    object-fit: contain !important;
+    flex-shrink: 0 !important;
 }
 
 .benefitBanner__title {
     font-weight: 700 !important;
+    font-size: 0.95em !important;
     color: #1a1a1a !important;
+}
+
+.benefitBanner__description {
+    font-size: 0.85em !important;
+    color: #666 !important;
 }
 
 /* ============================================================
@@ -386,4 +427,33 @@ a:hover, a:focus {
 .admin-bar a,
 .top-navigation-bar a {
     text-decoration: none !important;
+}
+
+/* ============================================================
+   OPRAVA TLAČÍTEK – černý text všude (bod 6, 11)
+   ============================================================ */
+
+.btn,
+.btn-default,
+.btn-primary,
+.btn-secondary,
+.btn-cart,
+.btn-conversion,
+.add-to-cart-button,
+button[type="submit"],
+input[type="submit"] {
+    color: #1a1a1a !important;
+    text-align: center !important;
+    justify-content: center !important;
+}
+
+/* Stránka Pobočky – tlačítka map */
+.branch-detail .btn,
+.branches .btn,
+[class*="branch"] .btn,
+[class*="pobock"] .btn {
+    color: #1a1a1a !important;
+    background-color: #f5a623 !important;
+    border-color: #f5a623 !important;
+    border-radius: 10px !important;
 }
