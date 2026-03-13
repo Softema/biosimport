@@ -51,7 +51,7 @@
     vloz(onas);
 
     // =============================================
-    // 2. RECENZE (BOD 3) - Přidaný Slider
+    // 2. RECENZE (BOD 3) - Šipky a skrytý posuvník
     // =============================================
     var recenze = document.createElement('section');
     recenze.id = 'recenze-sekce';
@@ -61,10 +61,14 @@
       '#recenze-sekce{background:#f8f8f8;padding:60px 20px;font-family:inherit;overflow:hidden;}' +
       '#recenze-sekce .rh{text-align:center;margin-bottom:40px;}' +
       '#recenze-sekce .rh h2{font-size:2.2em;font-weight:800;color:#1a1a1a;margin:0;}' +
-      '#recenze-sekce .rg{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:24px;max-width:1100px;margin:0 auto 24px;padding-bottom:15px;}' +
-      '#recenze-sekce .rg::-webkit-scrollbar { height: 8px; }' +
-      '#recenze-sekce .rg::-webkit-scrollbar-thumb { background: #f5a623; border-radius: 4px; }' +
-      '#recenze-sekce .rg::-webkit-scrollbar-track { background: #e0e0e0; border-radius: 4px; }' +
+      '#recenze-sekce .rw{position:relative;max-width:1100px;margin:0 auto 24px;}' +
+      '#recenze-sekce .rg{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:24px;padding-bottom:10px;scroll-behavior:smooth;scrollbar-width:none;}' +
+      '#recenze-sekce .rg::-webkit-scrollbar{display:none;}' +
+      '#recenze-sekce .nav-btn{position:absolute;top:50%;transform:translateY(-50%);width:44px;height:44px;background:#fff;border:1px solid #eee;border-radius:50%;font-size:20px;color:#333;cursor:pointer;z-index:10;box-shadow:0 4px 10px rgba(0,0,0,0.1);display:flex;align-items:center;justify-content:center;transition:background 0.2s;}' +
+      '#recenze-sekce .nav-btn:hover{background:#f8f8f8;}' +
+      '#recenze-sekce .nav-left{left:-22px;}' +
+      '#recenze-sekce .nav-right{right:-22px;}' +
+      '@media(max-width:1150px){#recenze-sekce .nav-btn{display:none;}}' +
       '#recenze-sekce .rk{background:#fff;border-radius:12px;padding:24px;box-shadow:0 2px 12px rgba(0,0,0,.07);flex:0 0 calc(33.333% - 16px);min-width:300px;scroll-snap-align:start;}' +
       '#recenze-sekce .rktop{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px;}' +
       '#recenze-sekce .rautor{display:flex;align-items:center;gap:12px;}' +
@@ -76,13 +80,17 @@
       '#recenze-sekce .gsummary{text-align:center;font-size:.95em;color:#1a1a1a;margin-top:8px;}' +
       '</style>' +
       '<div class="rh"><h2>Zpětná vazba zákazníků</h2></div>' +
-      '<div class="rg">' +
-        '<div class="rk"><div class="rktop"><div class="rautor"><div class="ravatar" style="background:#7b4fa6;">J</div><div><div class="rjmeno">Jaroslav Opravil</div><div class="rdoba">před 8 měsíci</div></div></div>'+hvezdy_svg+'</div><div class="rhvezdy">★★★★★ <span>✓</span></div><div class="rtext">Na doporučení majitele firmy, jsem si koupil renovovaný traktor Yanmar f18D, se kterým jsem velmi spokojen. Splnil všechny mé představy...</div></div>' +
-        '<div class="rk"><div class="rktop"><div class="rautor"><div class="ravatar" style="background:#d9534f;">R</div><div><div class="rjmeno">Radim Ptáček</div><div class="rdoba">před 3 měsíci</div></div></div>'+hvezdy_svg+'</div><div class="rhvezdy">★★★★★ <span>✓</span></div><div class="rtext">U BIOS Import jsem pořídil malotraktor a musím říct, že od prvního kontaktu až po převzetí bylo všechno naprosto perfektní. Oceňuji profesionální a velmi vstřícné...</div></div>' +
-        '<div class="rk"><div class="rktop"><div class="rautor"><div class="ravatar" style="background:#1e8c5a;">S</div><div><div class="rjmeno">Sao Rysy</div><div class="rdoba">před 9 měsíci</div></div></div>'+hvezdy_svg+'</div><div class="rhvezdy">★★★★★ <span>✓</span></div><div class="rtext">Maximální spokojenost a profesionální přístup prodejce. Z celé řady prodejců, jsem jsi lépe vybrat nemohl. Doporučuji</div></div>' +
-        '<div class="rk"><div class="rktop"><div class="rautor"><div class="ravatar" style="background:#e83e8c;">A</div><div><div class="rjmeno">Anna Capkova</div><div class="rdoba">před 4 měsíci</div></div></div>'+hvezdy_svg+'</div><div class="rhvezdy">★★★★★ <span>✓</span></div><div class="rtext">Dobrá komunikace, seriózní přístup, vstřícné jednání. L.S.</div></div>' +
-        '<div class="rk"><div class="rktop"><div class="rautor"><div class="ravatar" style="background:#0275d8;"><img src="https://i.pravatar.cc/100?img=11" style="border-radius:50%;width:100%;"></div><div><div class="rjmeno">mirek</div><div class="rdoba">před 1 měsícem</div></div></div>'+hvezdy_svg+'</div><div class="rhvezdy">★★★★★ <span>✓</span></div><div class="rtext">Doporučuji navštívit . Ochotně vysvětlí,pujči , přesvedou 👍</div></div>' +
-        '<div class="rk"><div class="rktop"><div class="rautor"><div class="ravatar" style="background:#555;">J</div><div><div class="rjmeno">Josef Novák</div><div class="rdoba">před 9 měsíci</div></div></div>'+hvezdy_svg+'</div><div class="rhvezdy">★★★★★ <span>✓</span></div><div class="rtext">Firmu BiosImport mohu jenom doporučit. Vstřícnost, ochota, profesionalita a trpělivost se zákazníkem je v dnešní době vzácná.</div></div>' +
+      '<div class="rw">' +
+        '<button class="nav-btn nav-left" onclick="document.getElementById(\'rg-slider\').scrollBy({left:-320})">❮</button>' +
+        '<div class="rg" id="rg-slider">' +
+          '<div class="rk"><div class="rktop"><div class="rautor"><div class="ravatar" style="background:#7b4fa6;">J</div><div><div class="rjmeno">Jaroslav Opravil</div><div class="rdoba">před 8 měsíci</div></div></div>'+hvezdy_svg+'</div><div class="rhvezdy">★★★★★ <span>✓</span></div><div class="rtext">Na doporučení majitele firmy, jsem si koupil renovovaný traktor Yanmar f18D, se kterým jsem velmi spokojen. Splnil všechny mé představy...</div></div>' +
+          '<div class="rk"><div class="rktop"><div class="rautor"><div class="ravatar" style="background:#d9534f;">R</div><div><div class="rjmeno">Radim Ptáček</div><div class="rdoba">před 3 měsíci</div></div></div>'+hvezdy_svg+'</div><div class="rhvezdy">★★★★★ <span>✓</span></div><div class="rtext">U BIOS Import jsem pořídil malotraktor a musím říct, že od prvního kontaktu až po převzetí bylo všechno naprosto perfektní. Oceňuji profesionální a velmi vstřícné...</div></div>' +
+          '<div class="rk"><div class="rktop"><div class="rautor"><div class="ravatar" style="background:#1e8c5a;">S</div><div><div class="rjmeno">Sao Rysy</div><div class="rdoba">před 9 měsíci</div></div></div>'+hvezdy_svg+'</div><div class="rhvezdy">★★★★★ <span>✓</span></div><div class="rtext">Maximální spokojenost a profesionální přístup prodejce. Z celé řady prodejců, jsem jsi lépe vybrat nemohl. Doporučuji</div></div>' +
+          '<div class="rk"><div class="rktop"><div class="rautor"><div class="ravatar" style="background:#e83e8c;">A</div><div><div class="rjmeno">Anna Capkova</div><div class="rdoba">před 4 měsíci</div></div></div>'+hvezdy_svg+'</div><div class="rhvezdy">★★★★★ <span>✓</span></div><div class="rtext">Dobrá komunikace, seriózní přístup, vstřícné jednání. L.S.</div></div>' +
+          '<div class="rk"><div class="rktop"><div class="rautor"><div class="ravatar" style="background:#0275d8;"><img src="https://i.pravatar.cc/100?img=11" style="border-radius:50%;width:100%;"></div><div><div class="rjmeno">mirek</div><div class="rdoba">před 1 měsícem</div></div></div>'+hvezdy_svg+'</div><div class="rhvezdy">★★★★★ <span>✓</span></div><div class="rtext">Doporučuji navštívit . Ochotně vysvětlí,pujči , přesvedou 👍</div></div>' +
+          '<div class="rk"><div class="rktop"><div class="rautor"><div class="ravatar" style="background:#555;">J</div><div><div class="rjmeno">Josef Novák</div><div class="rdoba">před 9 měsíci</div></div></div>'+hvezdy_svg+'</div><div class="rhvezdy">★★★★★ <span>✓</span></div><div class="rtext">Firmu BiosImport mohu jenom doporučit. Vstřícnost, ochota, profesionalita a trpělivost se zákazníkem je v dnešní době vzácná.</div></div>' +
+        '</div>' +
+        '<button class="nav-btn nav-right" onclick="document.getElementById(\'rg-slider\').scrollBy({left:320})">❯</button>' +
       '</div>' +
       '<p class="gsummary"><strong>Google</strong> – souhrnné hodnocení <strong>5.0</strong> z 5, na základě <strong>39 hodnocení</strong></p>';
     vloz(recenze);
@@ -110,7 +118,7 @@
     vloz(partneri);
 
     // =============================================
-    // 4. POBOČKY (BOD 4) - Stejná výška map
+    // 4. POBOČKY (BOD 4) - Sjednocení výšky map
     // =============================================
     var pobocky = document.createElement('section');
     pobocky.id = 'pobocky-sekce';
@@ -138,7 +146,7 @@
     vloz(pobocky);
 
     // =============================================
-    // 5. POPTÁVKOVÝ FORMULÁŘ
+    // 5. POPTÁVKOVÝ FORMULÁŘ (BOD 4) - PŮVODNÍ VELKÁ VERZE
     // =============================================
     var poptavka = document.createElement('section');
     poptavka.id = 'poptavka-sekce';
@@ -150,24 +158,76 @@
       '#poptavka-sekce .pi,#poptavka-sekce .pf{background:#fff;border-radius:12px;padding:40px;box-shadow:0 2px 16px rgba(0,0,0,.08);}' +
       '#poptavka-sekce h2{font-size:1.8em;font-weight:800;color:#1a1a1a;margin:0 0 16px;}' +
       '#poptavka-sekce .perex{font-weight:600;color:#1a1a1a;margin:0 0 28px;line-height:1.5;}' +
+      '#poptavka-sekce .tr{margin-bottom:4px;}' +
       '#poptavka-sekce .tr a{color:#f5a623!important;font-weight:700;font-size:1.05em;text-decoration:none!important;}' +
+      '#poptavka-sekce .tp{color:#666;font-size:.88em;margin:2px 0 16px 26px;}' +
+      '#poptavka-sekce .er{margin:4px 0 28px;}' +
       '#poptavka-sekce .er a{color:#f5a623!important;font-weight:600;text-decoration:none!important;}' +
+      '#poptavka-sekce .fak{border-top:1px solid #eee;padding-top:20px;}' +
+      '#poptavka-sekce .fak h3{font-size:1em;font-weight:700;margin:0 0 10px;}' +
+      '#poptavka-sekce .upoz{background:#e8f4fd;border-radius:6px;padding:10px 14px;font-size:.85em;font-weight:600;margin-bottom:10px;}' +
+      '#poptavka-sekce .adr{font-size:.9em;color:#555;line-height:1.7;}' +
       '#poptavka-sekce .fg{margin-bottom:14px;}' +
-      '#poptavka-sekce .fg label{display:block;font-size:.9em;font-weight:500;margin-bottom:5px;}' +
-      '#poptavka-sekce .fg input,#poptavka-sekce .fg textarea{width:100%;border:1.5px solid #e0e0e0;border-radius:8px;padding:12px 16px;font-family:inherit;box-sizing:border-box;}' +
-      '#poptavka-sekce .btn-send{width:100%;background:#f5a623;color:#333;font-weight:700;padding:16px;border:none;border-radius:10px;cursor:pointer;text-transform:uppercase;}' +
+      '#poptavka-sekce .fg label{display:block;font-size:.9em;font-weight:500;margin-bottom:5px;color:#1a1a1a;}' +
+      '#poptavka-sekce .fg input,#poptavka-sekce .fg textarea{width:100%;border:1.5px solid #e0e0e0;border-radius:8px;padding:12px 16px;font-size:.95em;background:#fafafa;box-sizing:border-box;font-family:inherit;}' +
+      '#poptavka-sekce .fg input:focus,#poptavka-sekce .fg textarea:focus{border-color:#f5a623;outline:none;background:#fff;}' +
+      '#poptavka-sekce .fg textarea{min-height:120px;resize:vertical;}' +
+      '#poptavka-sekce .souhlas{display:flex;align-items:flex-start;gap:8px;font-size:.88em;color:#555;margin:14px 0;}' +
+      '#poptavka-sekce .souhlas input{margin-top:2px;flex-shrink:0;}' +
+      '#poptavka-sekce .btn-send{width:100%;background:#f5a623;color:#1a1a1a;font-weight:700;font-size:1em;padding:16px;border:none;border-radius:8px;cursor:pointer;text-transform:none;font-family:inherit;}' +
+      '#poptavka-sekce .btn-send:hover{background:#e09610;}' +
+      '#poptavka-sekce .uspech{display:none;text-align:center;padding:40px 20px;color:#2d7a2d;font-weight:600;font-size:1.1em;}' +
+      '#poptavka-sekce .chyba{display:none;color:#cc0000;font-size:.88em;margin-top:8px;text-align:center;}' +
       '</style>' +
       '<div class="pw">' +
-        '<div class="pi"><h2>Poptávkový formulář</h2><p class="perex">V případě zájmu o naše produkty nám napište nebo rovnou volejte.</p><div class="tr">📞 <a href="tel:+420735135242">+420 735 135 242</a></div><p style="margin:2px 0 16px 26px;color:#666;">Prodej malotraktorů</p><div class="er">✉ <a href="mailto:info@biosimport.cz">info@biosimport.cz</a></div></div>' +
-        '<div class="pf"><form id="p-form" action="https://formspree.io/f/mbdazjlz" method="POST"><div class="fg"><label>Jméno a příjmení</label><input type="text" name="jmeno" required></div><div class="fg"><label>E-mail</label><input type="email" name="email" required></div><div class="fg"><label>Poznámka</label><textarea name="message" style="min-height:100px;"></textarea></div><button type="submit" class="btn-send">Odeslat poptávku</button></form><div id="p-uspech" style="display:none;color:green;font-weight:bold;text-align:center;">Děkujeme! Ozveme se co nejdříve.</div></div>' +
+        '<div class="pi">' +
+          '<h2>Poptávkový formulář</h2>' +
+          '<p class="perex">V případě zájmu o naše produkty nám napište nebo rovnou volejte.</p>' +
+          '<div class="tr">📞 <a href="tel:+420735135242">+420 735 135 242</a></div>' +
+          '<p class="tp">Prodej malotraktorů</p>' +
+          '<div class="tr">📞 <a href="tel:+420735199881">+420 735 199 881</a></div>' +
+          '<p class="tp">Prodej příslušenství, zákaznický servis</p>' +
+          '<div class="er">✉ <a href="mailto:info@biosimport.cz">info@biosimport.cz</a></div>' +
+          '<div class="fak">' +
+            '<h3>Fakturační adresa</h3>' +
+            '<div class="upoz">ℹ️ Pouze pro fakturační účely – nikoli pro doručování zboží!</div>' +
+            '<div class="adr">Sídlo firmy, korespondenční adresa:<br>B. Kobzinové 2020, 580 01 Havlíčkův Brod<br>IČ: 17543169, DIČ: CZ17543169</div>' +
+          '</div>' +
+        '</div>' +
+        '<div class="pf">' +
+          '<div class="uspech" id="p-uspech">✅ Děkujeme! Poptávka odeslána. Ozveme se co nejdříve.</div>' +
+          '<form id="p-form" action="https://formspree.io/f/mbdazjlz" method="POST">' +
+            '<div class="fg"><label>Jméno a příjmení</label><input type="text" name="jmeno" required></div>' +
+            '<div class="fg"><label>E-mail</label><input type="email" name="email" required></div>' +
+            '<div class="fg"><label>Mobil</label><input type="tel" name="mobil"></div>' +
+            '<div class="fg"><label>Poznámka</label><textarea name="message"></textarea></div>' +
+            '<label class="souhlas"><input type="checkbox" required> Souhlasím se zpracováním osobních údajů *</label>' +
+            '<button type="submit" class="btn-send">Odeslat poptávku</button>' +
+            '<div class="chyba" id="p-chyba">Nepodařilo se odeslat. Zkuste to prosím znovu.</div>' +
+          '</form>' +
+        '</div>' +
       '</div>';
     vloz(poptavka);
 
     document.getElementById('p-form').addEventListener('submit', function(e) {
       e.preventDefault();
-      var btn = this.querySelector('.btn-send'); btn.textContent = 'Odesílám...'; btn.disabled = true;
-      fetch('https://formspree.io/f/mbdazjlz', { method: 'POST', body: new FormData(this), headers: { 'Accept': 'application/json' } })
-      .then(r => { if(r.ok){ document.getElementById('p-form').style.display = 'none'; document.getElementById('p-uspech').style.display = 'block'; } });
+      var btn = this.querySelector('.btn-send');
+      btn.textContent = 'Odesílám...';
+      btn.disabled = true;
+      fetch('https://formspree.io/f/mbdazjlz', {
+        method: 'POST',
+        body: new FormData(this),
+        headers: { 'Accept': 'application/json' }
+      }).then(function(r) {
+        if (r.ok) {
+          document.getElementById('p-form').style.display = 'none';
+          document.getElementById('p-uspech').style.display = 'block';
+        } else {
+          document.getElementById('p-chyba').style.display = 'block';
+          btn.disabled = false;
+          btn.textContent = 'Odeslat poptávku';
+        }
+      });
     });
 
   });
