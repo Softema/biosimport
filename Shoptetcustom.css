@@ -1,6 +1,6 @@
 /*
  * SHOPTET CUSTOM CSS – Styl inspirovaný biosimport.cz
- * GitHub: https://github.com/Softema/biosimport
+ * GitHub: Softema/biosimport
  */
 
 :root {
@@ -42,7 +42,6 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4 {
     color: #1a1a1a !important;
     font-weight: 600 !important;
     font-size: 15px !important;
-    text-transform: uppercase !important;
 }
 .navigation-in > ul > li > a:hover, .navigation-in > ul > li.open > a {
     color: #f5a623 !important;
@@ -54,7 +53,7 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4 {
 }
 
 /* ============================================================
-   TLAČÍTKA OBECNĚ (BOD 6) - Tmavý text #333333, 10px radius
+   TLAČÍTKA OBECNĚ (BOD 1, 2, 6) - Normální text, 10px radius
    ============================================================ */
 .btn-conversion,
 .btn-primary,
@@ -66,12 +65,9 @@ input[type="submit"] {
     color: #333333 !important;
     font-weight: 700 !important;
     border-radius: 10px !important;
-    text-transform: uppercase !important;
-    font-size: 14px !important;
+    text-transform: none !important; /* Zrušení velkých písmen */
+    font-size: 15px !important;
     padding: 12px 24px !important;
-    display: inline-flex !important;
-    align-items: center !important;
-    justify-content: center !important;
     text-align: center !important;
 }
 
@@ -80,9 +76,7 @@ input[type="submit"] {
     border-color:     #d4891a !important;
 }
 
-/* ============================================================
-   TLAČÍTKO KOŠÍK / MENU (BOD 2) - Bílý text, 10px radius
-   ============================================================ */
+/* Tlačítko KOŠÍK - Bílý text */
 .btn-cart,
 .add-to-cart-button,
 .cart-count {
@@ -91,12 +85,9 @@ input[type="submit"] {
     color: #ffffff !important;
     font-weight: 700 !important;
     border-radius: 10px !important;
-    padding: 12px 20px !important;
-    display: inline-flex !important;
-    align-items: center !important;
-    justify-content: center !important;
+    padding: 12px 24px !important;
     text-align: center !important;
-    text-transform: uppercase !important;
+    text-transform: none !important; /* Zrušení velkých písmen */
 }
 
 .search-form .btn-default, .search .btn-default {
@@ -105,7 +96,7 @@ input[type="submit"] {
     color: #333333 !important;
     font-weight: 700 !important;
     border-radius: 0 10px 10px 0 !important;
-    text-transform: uppercase !important;
+    text-transform: none !important;
 }
 .search-input, .query-input {
     border-radius: 10px 0 0 10px !important;
@@ -113,38 +104,28 @@ input[type="submit"] {
 }
 
 /* ============================================================
-   BENEFIT BANNER (BOD 1) - Široký formát a ikony
+   BENEFIT BANNER (BOD 1) - Původní layout, pozadí přes celou šířku
    ============================================================ */
 .benefitBanner {
-    width: 100vw !important;
     position: relative !important;
-    left: 50% !important;
-    right: 50% !important;
-    margin-left: -50vw !important;
-    margin-right: -50vw !important;
-    padding: 24px 0 !important;
-    margin-top: 0 !important; /* Odstraní mezeru nahoře */
+    background-color: transparent !important; /* Vykreslíme přes ::before */
+    border: none !important;
+    margin-top: 0 !important; /* Zrušení mezery */
+    z-index: 1 !important;
+}
+
+/* Tento pseudo-element se roztáhne zleva doprava na celou obrazovku */
+.benefitBanner::before {
+    content: "" !important;
+    position: absolute !important;
+    top: -3px !important;
+    bottom: -3px !important;
+    left: -50vw !important;
+    right: -50vw !important;
     background-color: #f8f8f8 !important;
     border-top: 3px solid #f5a623 !important;
     border-bottom: 3px solid #f5a623 !important;
-}
-
-/* Obalovač uvnitř banneru pro centrování obsahu */
-.benefitBanner > div, .benefitBanner .container {
-    max-width: 1200px !important;
-    margin: 0 auto !important;
-    padding: 0 20px !important;
-}
-
-/* Sjednocení ikon */
-.benefitBanner img, .benefitBanner .image {
-    height: 40px !important;
-    width: auto !important;
-    object-fit: contain !important;
-    margin-bottom: 8px !important;
-    display: block !important;
-    margin-left: auto !important;
-    margin-right: auto !important;
+    z-index: -1 !important;
 }
 
 /* Produkty */
@@ -164,5 +145,5 @@ a { color: #f5a623 !important; }
 a:hover { color: #d4891a !important; }
 .navigation-in a, .btn-cart, .btn-conversion, .btn-primary, .add-to-cart-button { text-decoration: none !important; }
 
-/* Skrytí nativního Shoptet footeru (bod 5) */
+/* Skrytí nativního Shoptet footeru */
 #footer { display: none !important; }
