@@ -1,0 +1,389 @@
+/*
+ * SHOPTET CUSTOM CSS – Styl inspirovaný biosimport.cz
+ * GitHub: https://github.com/vyslouzildenis-maker/shoptet-custom
+ */
+
+/* ============================================================
+   GLOBÁLNÍ PROMĚNNÉ
+   ============================================================ */
+
+:root {
+    --color-primary:        #f5a623 !important;
+    --color-primary-hover:  #d4891a !important;
+    --color-secondary:      #f5a623 !important;
+    --color-tertiary:       #f5a623 !important;
+}
+
+/* ============================================================
+   ZÁKLADNÍ TYPOGRAFIE
+   ============================================================ */
+
+body {
+    font-family: 'Source Sans 3', sans-serif !important;
+    color: #333333 !important;
+    background-color: #ffffff !important;
+}
+
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4 {
+    font-family: 'Exo 2', sans-serif !important;
+    font-weight: 700 !important;
+    color: #1a1a1a !important;
+}
+
+/* ============================================================
+   HORNÍ INFO LIŠTA (top-navigation-bar) – černá
+   ============================================================ */
+
+.top-navigation-bar {
+    background-color: #1a1a1a !important;
+    color: #ffffff !important;
+    font-size: 13px !important;
+}
+
+.top-navigation-bar a,
+.top-navigation-bar .project-phone,
+.top-navigation-bar .top-navigation-contacts,
+.top-navigation-bar .top-navigation-menu a {
+    color: #ffffff !important;
+}
+
+.top-navigation-bar a:hover {
+    color: #f5a623 !important;
+}
+
+.top-nav-button-login {
+    background-color: #f5a623 !important;
+    border-color:     #f5a623 !important;
+    color: #1a1a1a !important;
+    font-weight: 600 !important;
+    border-radius: 4px !important;
+}
+
+.top-nav-button-login:hover {
+    background-color: #d4891a !important;
+    border-color:     #d4891a !important;
+}
+
+/* ============================================================
+   HEADER – bílý s jemným stínem
+   ============================================================ */
+
+#header {
+    background-color: #ffffff !important;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.10) !important;
+}
+
+/* ============================================================
+   NAVIGACE – bílé pozadí, tmavý text
+   ============================================================ */
+
+.navigation-in {
+    background-color: #ffffff !important;
+}
+
+.navigation-in > ul > li > a,
+.navigation-in > ul > li > a b {
+    color: #1a1a1a !important;
+    font-weight: 600 !important;
+    font-size: 15px !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.03em !important;
+}
+
+.navigation-in > ul > li > a:hover,
+.navigation-in > ul > li.open > a {
+    color: #f5a623 !important;
+    background-color: transparent !important;
+}
+
+/* Aktivní položka – žlutá čára dole */
+.navigation-in > ul > li.active > a {
+    color: #f5a623 !important;
+    border-bottom: 3px solid #f5a623 !important;
+}
+
+/* ============================================================
+   TLAČÍTKA – žlutá, mírně zaoblená (jako biosimport)
+   ============================================================ */
+
+.btn-cart,
+.add-to-cart-button,
+.btn-conversion,
+.btn-primary,
+.btn-secondary,
+button[type="submit"],
+input[type="submit"],
+.btn,
+.btn-default {
+    background-color: #f5a623 !important;
+    border-color:     #f5a623 !important;
+    color: #333333 !important;
+    font-weight: 700 !important;
+    border-radius: 10px !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.05em !important;
+    font-size: 13px !important;
+    padding: 10px 20px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+.btn-cart:hover,
+.add-to-cart-button:hover,
+.btn-conversion:hover,
+.btn-primary:hover,
+.btn-secondary:hover,
+button[type="submit"]:hover,
+input[type="submit"]:hover,
+.btn:hover,
+.btn-default:hover {
+    background-color: #d4891a !important;
+    border-color:     #d4891a !important;
+    color: #333333 !important;
+}
+
+/* Tlačítko v navigaci/menu – bílý text */
+.navigation-in .btn,
+.header-cart .btn,
+.btn-login,
+.top-nav-button-login {
+    color: #ffffff !important;
+}
+
+.search-form .btn-default,
+.search .btn-default {
+    background-color: #f5a623 !important;
+    border-color:     #f5a623 !important;
+    color: #333333 !important;
+    font-weight: 700 !important;
+    border-radius: 0 10px 10px 0 !important;
+    text-transform: uppercase !important;
+}
+
+.search-form .btn-default:hover {
+    background-color: #d4891a !important;
+    border-color:     #d4891a !important;
+}
+
+/* ============================================================
+   VYHLEDÁVÁNÍ – input
+   ============================================================ */
+
+.search-input,
+.query-input {
+    border-radius: 4px 0 0 4px !important;
+    border-color: #dddddd !important;
+}
+
+/* ============================================================
+   PRODUKTOVÉ KARTY
+   ============================================================ */
+
+.product {
+    border: 1px solid #eeeeee !important;
+    border-radius: 6px !important;
+    overflow: hidden !important;
+    transition: box-shadow 0.2s ease, transform 0.2s ease !important;
+    background-color: #ffffff !important;
+}
+
+.product:hover {
+    box-shadow: 0 6px 24px rgba(0,0,0,0.10) !important;
+    transform: translateY(-2px) !important;
+}
+
+.product .name,
+.product .name span {
+    color: #1a1a1a !important;
+    font-weight: 600 !important;
+}
+
+.product .name:hover,
+.product .name:hover span {
+    color: #f5a623 !important;
+}
+
+.price-final strong,
+.price.price-final {
+    color: #f5a623 !important;
+    font-weight: 700 !important;
+    font-size: 1.2em !important;
+}
+
+/* Štítky produktů */
+.flag-tip {
+    background-color: #f5a623 !important;
+    color: #1a1a1a !important;
+}
+
+.flag-new {
+    background-color: #2ecc71 !important;
+}
+
+.flag-action {
+    background-color: #e74c3c !important;
+}
+
+/* ============================================================
+   NADPISY SEKCÍ na homepage
+   ============================================================ */
+
+.homepage-group-title {
+    font-size: 1.8rem !important;
+    font-weight: 700 !important;
+    color: #1a1a1a !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.05em !important;
+    margin-bottom: 24px !important;
+    padding-bottom: 12px !important;
+    border-bottom: 3px solid #f5a623 !important;
+    display: inline-block !important;
+}
+
+/* ============================================================
+   BENEFIT BANNER (ikony pod carousel)
+   ============================================================ */
+
+.benefitBanner {
+    background-color: #f8f8f8 !important;
+    border-top: 3px solid #f5a623 !important;
+    border-bottom: 3px solid #f5a623 !important;
+    padding: 20px 0 !important;
+    margin: 0 !important;
+    width: 100% !important;
+}
+
+/* Odstraní mezeru mezi bannerem a proužkem */
+.benefitBanner + *,
+.homepage-carousel + .benefitBanner,
+.slick-slider + .benefitBanner {
+    margin-top: 0 !important;
+}
+
+/* Carousel/banner těsně nad benefit lištou */
+.homepage-carousel,
+.main-carousel,
+[class*="carousel"],
+[class*="banner"] {
+    margin-bottom: 0 !important;
+}
+
+/* Ikony benefitů – stejná velikost */
+.benefitBanner__icon,
+.benefitBanner .icon,
+.benefitBanner img,
+.benefitBanner svg {
+    width: 40px !important;
+    height: 40px !important;
+    object-fit: contain !important;
+    flex-shrink: 0 !important;
+}
+
+/* Každá položka benefitu – zarovnaná výška */
+.benefitBanner__item,
+.benefitBanner .item,
+.benefitBanner li {
+    display: flex !important;
+    align-items: center !important;
+    gap: 12px !important;
+}
+
+.benefitBanner__title {
+    font-weight: 700 !important;
+    color: #1a1a1a !important;
+}
+
+/* ============================================================
+   FORMULÁŘE – focus
+   ============================================================ */
+
+input:focus,
+textarea:focus,
+select:focus {
+    border-color: #f5a623 !important;
+    box-shadow: 0 0 0 2px rgba(245,166,35,0.2) !important;
+    outline: none !important;
+}
+
+/* ============================================================
+   STRÁNKOVÁNÍ
+   ============================================================ */
+
+.pagination > .active > a,
+.pagination > .active > span {
+    background-color: #f5a623 !important;
+    border-color:     #f5a623 !important;
+    color: #1a1a1a !important;
+}
+
+.pagination > li > a:hover {
+    background-color: #f5a623 !important;
+    border-color:     #f5a623 !important;
+    color: #1a1a1a !important;
+}
+
+/* ============================================================
+   PATIČKA – tmavá
+   ============================================================ */
+
+#footer {
+    background-color: #1a1a1a !important;
+    color: #cccccc !important;
+    border-top: 3px solid #f5a623 !important;
+}
+
+#footer a {
+    color: #cccccc !important;
+}
+
+#footer a:hover {
+    color: #f5a623 !important;
+}
+
+/* ============================================================
+   KOŠÍK – ikona
+   ============================================================ */
+
+.cart-count,
+.cart-count-number {
+    background-color: #f5a623 !important;
+    border-color:     #f5a623 !important;
+    color: #1a1a1a !important;
+}
+
+/* ============================================================
+   CENOVÝ SLIDER
+   ============================================================ */
+
+.ui-slider-range {
+    background-color: #f5a623 !important;
+}
+
+.ui-slider-handle {
+    border-color: #f5a623 !important;
+}
+
+/* ============================================================
+   OBECNÉ ODKAZY
+   ============================================================ */
+
+a {
+    color: #f5a623 !important;
+}
+
+a:hover, a:focus {
+    color: #d4891a !important;
+}
+
+/* Výjimky – tmavý text tam kde je pozadí žluté/bílé */
+.navigation-in a,
+.btn-cart,
+.btn-conversion,
+.btn-primary,
+.add-to-cart-button,
+.admin-bar a,
+.top-navigation-bar a {
+    text-decoration: none !important;
+}

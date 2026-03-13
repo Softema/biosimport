@@ -1,5 +1,5 @@
 // BiosImport - Homepage sekce
-// GitHub: vyslouzildenis-maker/shoptet-custom
+// GitHub: Softema/biosimport
 
 (function() {
   var CDN = 'https://cdn.jsdelivr.net/gh/Softema/biosimport@main/';
@@ -82,67 +82,113 @@
     vloz(onas);
 
     // =============================================
-    // 2. RECENZE
+    // 2. RECENZE – SLIDER
     // =============================================
+    var recenzeData = [
+      { jmeno:'Jaroslav Opravil', doba:'před 8 měsíci', barva:'#7b4fa6', iniciala:'J',
+        text:'Na doporučení majitele firmy jsem si koupil renovovaný traktor Yanmar f18D, se kterým jsem velmi spokojen. Splnil všechny mé představy, proto tuto firmu doporučuji.' },
+      { jmeno:'Sao Rysy', doba:'před 9 měsíci', barva:'#1e8c5a', iniciala:'S',
+        text:'Maximální spokojenost a profesionální přístup prodejce. Z celé řady prodejců jsem si lépe vybrat nemohl. Doporučuji.' },
+      { jmeno:'Josef Novák', doba:'před 9 měsíci', barva:'#555', iniciala:'J',
+        text:'Firmu BiosImport mohu jenom doporučit. Vstřícnost, ochota, profesionalita a trpělivost se zákazníkem je v dnešní době vzácná.' },
+      { jmeno:'Pavel Kratochvíl', doba:'před 5 měsíci', barva:'#1a6bbf', iniciala:'P',
+        text:'Perfektní jednání, traktor přesně v dohodnutém stavu. Servis po koupi bezproblémový. Jsem maximálně spokojený zákazník.' },
+      { jmeno:'Martin Horáček', doba:'před 3 měsíci', barva:'#b44d12', iniciala:'M',
+        text:'Koupil jsem traktor Kubota a jsem nadšený. Vše bylo připraveno přesně jak bylo popsáno, chod traktoru bezchybný. Doporučuji každému.' },
+      { jmeno:'Jana Dvořáčková', doba:'před 6 měsíci', barva:'#8a2fa0', iniciala:'J',
+        text:'Velmi příjemné a rychlé jednání. Traktor dorazil včas, perfektně repasovaný. Příslušenství fungovalo okamžitě po připojení. Skvělá firma.' }
+    ];
+
+    var googleSVG = '<svg width="18" height="18" viewBox="0 0 24 24" style="flex-shrink:0"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>';
+
+    var recenzeCards = recenzeData.map(function(r, i) {
+      return '<div class="rk" data-index="' + i + '">' +
+        '<div class="rktop">' +
+          '<div class="rautor"><div class="ravatar" style="background:' + r.barva + ';">' + r.iniciala + '</div>' +
+          '<div><div class="rjmeno">' + r.jmeno + '</div><div class="rdoba">' + r.doba + '</div></div></div>' +
+          googleSVG +
+        '</div>' +
+        '<div class="rhvezdy">★★★★★</div>' +
+        '<div class="rtext">' + r.text + '</div>' +
+      '</div>';
+    }).join('');
+
     var recenze = document.createElement('section');
     recenze.id = 'recenze-sekce';
     recenze.innerHTML =
       '<style>' +
-      '#recenze-sekce{background:#f8f8f8;padding:60px 20px;font-family:inherit;}' +
+      '#recenze-sekce{background:#f8f8f8;padding:60px 20px;font-family:inherit;overflow:hidden;}' +
       '#recenze-sekce .rh{text-align:center;margin-bottom:40px;}' +
       '#recenze-sekce .rh h2{font-size:2.2em;font-weight:800;color:#1a1a1a;margin:0;}' +
-      '#recenze-sekce .rg{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:1100px;margin:0 auto 24px;}' +
-      '@media(max-width:900px){#recenze-sekce .rg{grid-template-columns:1fr;}}' +
-      '#recenze-sekce .rk{background:#fff;border-radius:12px;padding:24px;box-shadow:0 2px 12px rgba(0,0,0,.07);}' +
+      '#recenze-sekce .rslider{position:relative;max-width:1100px;margin:0 auto;}' +
+      '#recenze-sekce .rtrack-wrap{overflow:hidden;}' +
+      '#recenze-sekce .rtrack{display:flex;transition:transform .4s ease;gap:24px;}' +
+      '#recenze-sekce .rk{background:#fff;border-radius:12px;padding:24px;box-shadow:0 2px 12px rgba(0,0,0,.07);min-width:calc(33.333% - 16px);box-sizing:border-box;flex-shrink:0;}' +
+      '@media(max-width:900px){#recenze-sekce .rk{min-width:calc(50% - 12px);}}' +
+      '@media(max-width:600px){#recenze-sekce .rk{min-width:100%;}}' +
       '#recenze-sekce .rktop{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px;}' +
       '#recenze-sekce .rautor{display:flex;align-items:center;gap:12px;}' +
       '#recenze-sekce .ravatar{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:1.1em;color:#fff;flex-shrink:0;}' +
       '#recenze-sekce .rjmeno{font-weight:700;font-size:.95em;color:#1a1a1a;}' +
       '#recenze-sekce .rdoba{font-size:.82em;color:#888;margin-top:2px;}' +
       '#recenze-sekce .rhvezdy{color:#f5a623;font-size:1.1em;margin-bottom:10px;}' +
-      '#recenze-sekce .rhvezdy span{color:#1a7ae0;font-size:.85em;margin-left:4px;}' +
       '#recenze-sekce .rtext{font-size:.9em;color:#444;line-height:1.6;}' +
-      '#recenze-sekce .rtext .vice{color:#888;font-size:.9em;margin-top:8px;display:block;}' +
-      '#recenze-sekce .gsummary{text-align:center;font-size:.95em;color:#1a1a1a;margin-top:8px;}' +
-      '#recenze-sekce .gsummary strong{font-weight:700;}' +
-      '#recenze-sekce .glogo{width:18px;vertical-align:middle;margin-right:4px;}' +
+      '#recenze-sekce .rnav{display:flex;justify-content:center;align-items:center;gap:16px;margin-top:32px;}' +
+      '#recenze-sekce .rbtn{background:#fff;border:2px solid #f5a623;border-radius:50%;width:42px;height:42px;cursor:pointer;font-size:1.2em;display:flex;align-items:center;justify-content:center;color:#f5a623;transition:all .2s;}' +
+      '#recenze-sekce .rbtn:hover{background:#f5a623;color:#fff;}' +
+      '#recenze-sekce .rdots{display:flex;gap:8px;}' +
+      '#recenze-sekce .rdot{width:10px;height:10px;border-radius:50%;background:#ddd;cursor:pointer;transition:background .2s;}' +
+      '#recenze-sekce .rdot.active{background:#f5a623;}' +
+      '#recenze-sekce .gsummary{text-align:center;font-size:.95em;color:#1a1a1a;margin-top:24px;}' +
       '</style>' +
       '<div class="rh"><h2>Zpětná vazba zákazníků</h2></div>' +
-      '<div class="rg">' +
-
-        '<div class="rk">' +
-          '<div class="rktop">' +
-            '<div class="rautor"><div class="ravatar" style="background:#7b4fa6;">J</div><div><div class="rjmeno">Jaroslav Opravil</div><div class="rdoba">před 8 měsíci</div></div></div>' +
-            '<svg width="18" height="18" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>' +
-          '</div>' +
-          '<div class="rhvezdy">★★★★★ <span>✓</span></div>' +
-          '<div class="rtext">Na doporučení majitele firmy, jsem si koupil renovovaný traktor Yanmar f18D, se kterým jsem velmi spokojen. Splnil všechny mé představy, proto tuto firmu doporučuji.<span class="vice">Přečtěte si více</span></div>' +
+      '<div class="rslider">' +
+        '<div class="rtrack-wrap"><div class="rtrack" id="rtrack">' + recenzeCards + '</div></div>' +
+        '<div class="rnav">' +
+          '<button class="rbtn" id="rprev">&#8592;</button>' +
+          '<div class="rdots" id="rdots"></div>' +
+          '<button class="rbtn" id="rnext">&#8594;</button>' +
         '</div>' +
-
-        '<div class="rk">' +
-          '<div class="rktop">' +
-            '<div class="rautor"><div class="ravatar" style="background:#1e8c5a;">S</div><div><div class="rjmeno">Sao Rysy</div><div class="rdoba">před 9 měsíci</div></div></div>' +
-            '<svg width="18" height="18" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>' +
-          '</div>' +
-          '<div class="rhvezdy">★★★★★ <span>✓</span></div>' +
-          '<div class="rtext">Maximální spokojenost a profesionální přístup prodejce. Z celé řady prodejců, jsem jsi lépe vybrat nemohl. Doporučuji</div>' +
-        '</div>' +
-
-        '<div class="rk">' +
-          '<div class="rktop">' +
-            '<div class="rautor"><div class="ravatar" style="background:#555;">J</div><div><div class="rjmeno">Josef Novák</div><div class="rdoba">před 9 měsíci</div></div></div>' +
-            '<svg width="18" height="18" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>' +
-          '</div>' +
-          '<div class="rhvezdy">★★★★★ <span>✓</span></div>' +
-          '<div class="rtext">Firmu BiosImport mohu jenom doporučit. Vstřícnost, ochota, profesionalita a trpělivost se zákazníkem je v dnešní době vzácná.<span class="vice">Přečtěte si více</span></div>' +
-        '</div>' +
-
       '</div>' +
       '<p class="gsummary"><strong>Google</strong> – souhrnné hodnocení <strong>5.0</strong> z 5, na základě <strong>39 hodnocení</strong></p>';
     vloz(recenze);
 
+    // Slider logika
+    (function() {
+      var track = document.getElementById('rtrack');
+      var dotsEl = document.getElementById('rdots');
+      var cards = track.querySelectorAll('.rk');
+      var total = cards.length;
+      var perPage = window.innerWidth <= 600 ? 1 : window.innerWidth <= 900 ? 2 : 3;
+      var pages = Math.ceil(total / perPage);
+      var current = 0;
+
+      for (var i = 0; i < pages; i++) {
+        var dot = document.createElement('span');
+        dot.className = 'rdot' + (i === 0 ? ' active' : '');
+        dot.setAttribute('data-page', i);
+        dot.addEventListener('click', function() { goTo(parseInt(this.getAttribute('data-page'))); });
+        dotsEl.appendChild(dot);
+      }
+
+      function goTo(page) {
+        current = (page + pages) % pages;
+        var cardWidth = cards[0].offsetWidth + 24;
+        track.style.transform = 'translateX(-' + (current * perPage * cardWidth) + 'px)';
+        dotsEl.querySelectorAll('.rdot').forEach(function(d, i) {
+          d.classList.toggle('active', i === current);
+        });
+      }
+
+      document.getElementById('rprev').addEventListener('click', function() { goTo(current - 1); });
+      document.getElementById('rnext').addEventListener('click', function() { goTo(current + 1); });
+
+      // Autoplay
+      setInterval(function() { goTo(current + 1); }, 5000);
+    })();
+
     // =============================================
-    // 2. PARTNEŘI
+    // 3. PARTNEŘI
     // =============================================
     var partneri = document.createElement('section');
     partneri.id = 'partneri-sekce';
@@ -164,7 +210,7 @@
     vloz(partneri);
 
     // =============================================
-    // 3. POBOČKY
+    // 4. POBOČKY
     // =============================================
     var pobocky = document.createElement('section');
     pobocky.id = 'pobocky-sekce';
@@ -176,14 +222,15 @@
       '#pobocky-sekce .ph p{color:#666;margin:0;}' +
       '#pobocky-sekce .pbg{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:1200px;margin:0 auto;}' +
       '@media(max-width:900px){#pobocky-sekce .pbg{grid-template-columns:1fr;}}' +
-      '#pobocky-sekce .pbk{background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.08);}' +
-      '#pobocky-sekce .pbi{padding:24px;}' +
+      '#pobocky-sekce .pbk{background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.08);display:flex;flex-direction:column;}' +
+      '#pobocky-sekce .pbi{padding:24px;flex:1;}' +
       '#pobocky-sekce .pbi h3{font-size:1.4em;font-weight:700;color:#1a1a1a;margin:0 0 8px;}' +
       '#pobocky-sekce .pbi .pp{color:#555;font-size:.9em;margin:0 0 14px;line-height:1.5;}' +
       '#pobocky-sekce .pbi .pa{color:#f5a623;font-weight:600;font-size:.95em;margin:0 0 14px;}' +
       '#pobocky-sekce .pbi .po{font-size:.9em;color:#1a1a1a;}' +
       '#pobocky-sekce .pbi .po strong{display:block;margin-bottom:3px;}' +
-      '#pobocky-sekce .pbm iframe{display:block;width:100%;height:220px;border:none;}' +
+      '#pobocky-sekce .pbm{flex-shrink:0;}' +
+      '#pobocky-sekce .pbm iframe{display:block;width:100%;height:220px;border:none;margin:0;padding:0;vertical-align:bottom;}' +
       '</style>' +
       '<div class="ph"><h2>Navštivte naše pobočky</h2><p>Vyzkoušejte si naše traktory osobně</p></div>' +
       '<div class="pbg">' +
@@ -218,7 +265,7 @@
     vloz(pobocky);
 
     // =============================================
-    // 4. POPTÁVKOVÝ FORMULÁŘ
+    // 5. POPTÁVKOVÝ FORMULÁŘ
     // =============================================
     var poptavka = document.createElement('section');
     poptavka.id = 'poptavka-sekce';
@@ -246,8 +293,8 @@
       '#poptavka-sekce .fg textarea{min-height:120px;resize:vertical;}' +
       '#poptavka-sekce .souhlas{display:flex;align-items:flex-start;gap:8px;font-size:.88em;color:#555;margin:14px 0;}' +
       '#poptavka-sekce .souhlas input{margin-top:2px;flex-shrink:0;}' +
-      '#poptavka-sekce .btn-send{width:100%;background:#f5a623;color:#1a1a1a;font-weight:700;font-size:1em;padding:16px;border:none;border-radius:8px;cursor:pointer;text-transform:uppercase;letter-spacing:.5px;font-family:inherit;}' +
-      '#poptavka-sekce .btn-send:hover{background:#e09610;}' +
+      '#poptavka-sekce .btn-send{width:100%;background:#f5a623;color:#333333;font-weight:700;font-size:1em;padding:16px;border:none;border-radius:10px;cursor:pointer;text-transform:uppercase;letter-spacing:.5px;font-family:inherit;}' +
+      '#poptavka-sekce .btn-send:hover{background:#d4891a;}' +
       '#poptavka-sekce .uspech{display:none;text-align:center;padding:40px 20px;color:#2d7a2d;font-weight:600;font-size:1.1em;}' +
       '#poptavka-sekce .chyba{display:none;color:#cc0000;font-size:.88em;margin-top:8px;text-align:center;}' +
       '</style>' +
@@ -281,7 +328,7 @@
       '</div>';
     vloz(poptavka);
 
-    // AJAX odeslání
+    // AJAX odeslání formuláře
     document.getElementById('p-form').addEventListener('submit', function(e) {
       e.preventDefault();
       var btn = this.querySelector('.btn-send');
