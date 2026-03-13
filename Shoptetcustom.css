@@ -365,14 +365,32 @@ a:hover, a:focus { color: #d4891a !important; }
 .branches .btn,
 [class*="branch"] .btn,
 [class*="pobock"] .btn,
-.branch-map-link,
-a.btn {
+.branch-map-link {
     color: #1a1a1a !important;
     background-color: #f5a623 !important;
     border-color: #f5a623 !important;
     border-radius: 10px !important;
     font-weight: 600 !important;
+}
+
+/* ============================================================
+   KOŠÍK TLAČÍTKO V HEADERU – text na střed
+   ============================================================ */
+
+.header-cart a,
+.header-cart .btn,
+[class*="header-cart"] a,
+[class*="header-cart"] .btn,
+[class*="cart"] > a {
     display: inline-flex !important;
     align-items: center !important;
     justify-content: center !important;
+    text-align: center !important;
+    gap: 8px !important;
+    background-color: #f5a623 !important;
+    color: #1a1a1a !important;
+    border-color: #f5a623 !important;
+    border-radius: 10px !important;
+    font-weight: 700 !important;
+    white-space: nowrap !important;
 }

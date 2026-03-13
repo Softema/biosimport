@@ -40,8 +40,8 @@
       '#onas-sekce .btn-vice.otevreno .sipka{transform:rotate(180deg);}' +
       '#onas-sekce .firmy{display:flex;justify-content:center;align-items:center;gap:16px;margin-top:40px;padding-top:30px;border-top:1px solid #eee;}' +
       /* Badge – bílý text na zeleném pozadí */
-      '#onas-sekce .badge{background:#4caf50;color:#fff!important;border-radius:20px;padding:8px 20px;font-weight:700;font-size:.95em;text-decoration:none!important;display:inline-block;transition:background .2s;border:none;}' +
-      '#onas-sekce .badge:hover{background:#388e3c;color:#fff!important;}' +
+      '#onas-sekce a.badge,#onas-sekce .badge{background:#4caf50!important;color:#fff!important;border-radius:20px;padding:8px 20px;font-weight:700;font-size:.95em;text-decoration:none!important;display:inline-block;transition:background .2s;border:none!important;}' +
+      '#onas-sekce a.badge:hover,#onas-sekce .badge:hover{background:#388e3c!important;color:#fff!important;}' +
       '</style>' +
       '<div class="oh">' +
         '<h2>Jsme BiosImport, <span>prodáváme a servisujeme malotraktory</span></h2>' +
@@ -129,7 +129,7 @@
           : '') +
         '</div>';
       }).join('');
-      return '<div class="rpage" style="display:' + (pi === 0 ? 'grid' : 'none') + ';" data-page="' + pi + '">' + cardsHTML + '</div>';
+      return '<div class="rpage" style="display:' + (pi === 0 ? 'grid' : 'none') + ';grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;" data-page="' + pi + '">' + cardsHTML + '</div>';
     }).join('');
 
     var recenze = document.createElement('section');
@@ -139,8 +139,8 @@
       '#recenze-sekce{background:#f8f8f8;padding:60px 20px;font-family:inherit;}' +
       '#recenze-sekce .rh{text-align:center;margin-bottom:40px;}' +
       '#recenze-sekce .rh h2{font-size:2.2em;font-weight:800;color:#1a1a1a;margin:0;}' +
-      '#recenze-sekce .rwrap{max-width:1100px;margin:0 auto;}' +
-      '#recenze-sekce .rpage{grid-template-columns:repeat(3,1fr);gap:24px;}' +
+      '#recenze-sekce .rwrap{max-width:1100px;margin:0 auto;padding:0 10px;}' +
+      '#recenze-sekce .rpage{display:none;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;}' +
       '@media(max-width:900px){#recenze-sekce .rpage{grid-template-columns:1fr;}}' +
       '#recenze-sekce .rk{background:#fff;border-radius:12px;padding:24px;box-shadow:0 2px 12px rgba(0,0,0,.07);transition:box-shadow .25s,transform .25s;}' +
       '#recenze-sekce .rk:hover{box-shadow:0 8px 28px rgba(0,0,0,.13);transform:translateY(-3px);}' +
@@ -184,7 +184,7 @@
         document.querySelectorAll('#recenze-sekce .rpage').forEach(function(p) {
           p.style.display = 'none';
         });
-        document.querySelector('#recenze-sekce .rpage[data-page="' + curPage + '"]').style.display = 'grid';
+        document.querySelector('#recenze-sekce .rpage[data-page="' + curPage + '"]').style.cssText = 'display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;';
         // Šipky – vždy aktivní (kolečko)
         prevBtn.disabled = false;
         nextBtn.disabled = false;
