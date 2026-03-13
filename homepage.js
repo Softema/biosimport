@@ -1,6 +1,4 @@
 // BiosImport - Homepage sekce
-// GitHub: Softema/biosimport
-
 (function() {
   var CDN = 'https://cdn.jsdelivr.net/gh/Softema/biosimport@main/';
 
@@ -9,7 +7,6 @@
     if (path !== '/' && path !== '/uvod/' && path !== '/uvod' && path !== '') return;
 
     var footer = document.querySelector('#footer, footer.footer, .footer, [id*="footer"], [class*="footer"]');
-
     function vloz(el) {
       if (footer) footer.parentNode.insertBefore(el, footer);
       else document.body.appendChild(el);
@@ -37,13 +34,14 @@
       '#onas-sekce .osloupec ul{padding-left:20px;}' +
       '#onas-sekce .osloupec ul li{margin-bottom:4px;}' +
       '#onas-sekce .skryt{overflow:hidden;transition:max-height .4s ease;}' +
-      '#onas-sekce .btn-vice{background:none;border:none;cursor:pointer;color:#555;font-size:.9em;padding:0;margin-top:8px;font-family:inherit;display:flex;align-items:center;gap:4px;}' +
+      '#onas-sekce .btn-vice{background:none;border:none;cursor:pointer;color:#888;font-size:.88em;padding:4px 0;margin-top:6px;font-family:inherit;display:inline-flex;align-items:center;gap:4px;}' +
       '#onas-sekce .btn-vice:hover{color:#1a1a1a;}' +
-      '#onas-sekce .sipka{display:inline-block;transition:transform .3s;}' +
+      '#onas-sekce .sipka{display:inline-block;transition:transform .3s;font-size:.8em;}' +
       '#onas-sekce .btn-vice.otevreno .sipka{transform:rotate(180deg);}' +
       '#onas-sekce .firmy{display:flex;justify-content:center;align-items:center;gap:16px;margin-top:40px;padding-top:30px;border-top:1px solid #eee;}' +
-      '#onas-sekce .badge{background:#4caf50;color:#fff;border-radius:20px;padding:6px 14px;font-weight:700;font-size:.95em;text-decoration:none;display:inline-block;transition:background .2s;}' +
-      '#onas-sekce .badge:hover{background:#388e3c;}' +
+      /* Badge – bílý text na zeleném pozadí */
+      '#onas-sekce .badge{background:#4caf50;color:#fff!important;border-radius:20px;padding:8px 20px;font-weight:700;font-size:.95em;text-decoration:none!important;display:inline-block;transition:background .2s;border:none;}' +
+      '#onas-sekce .badge:hover{background:#388e3c;color:#fff!important;}' +
       '</style>' +
       '<div class="oh">' +
         '<h2>Jsme BiosImport, <span>prodáváme a servisujeme malotraktory</span></h2>' +
@@ -63,7 +61,7 @@
             '<ul><li>3bodovým závěsem</li><li>závěsným okem</li><li>vývodovou hřídelí (PTO)</li></ul>' +
             '<p>Velmi snadno k nim proto připojíte rotavátor, mulčovač, vozík, pluh, vyorávač, štípačku, kultivátor, sazeč nebo jiné příslušenství.</p>' +
           '</div>' +
-          '<button class="btn-vice" onclick="(function(b){var t=document.getElementById(\'onas-text1\');var o=b.classList.toggle(\'otevreno\');t.style.maxHeight=o?t.scrollHeight+\'px\':\'0\';b.querySelector(\'.label\').textContent=o?\'Méně\':\'Více\';})(this)"><span class="label">Více</span> <span class="sipka">∧</span></button>' +
+          '<button class="btn-vice" onclick="(function(b){var t=document.getElementById(\'onas-text1\');var o=b.classList.toggle(\'otevreno\');t.style.maxHeight=o?t.scrollHeight+\'px\':\'0\';b.querySelector(\'.label\').textContent=o?\'Méně\':\'Více\';})(this)"><span class="label">Více</span><span class="sipka"> ▲</span></button>' +
         '</div>' +
         '<div class="osloupec">' +
           '<h3>Repase</h3>' +
@@ -71,7 +69,7 @@
           '<div class="skryt" id="onas-text2" style="max-height:0;">' +
             '<ul><li>nové náplně (chladicí kapalina, motorový olej, převodový olej)</li><li>nové filtry (olej, vzduch, nafta)</li><li>repase žhavení</li><li>repase elektroinstalace</li><li>repase alternátoru a startéru</li><li>repase chladiče, nové hadice a řemeny</li><li>repase brzd</li><li>nový potah sedačky</li><li>nová baterie</li><li>kompletně nový lak</li><li>nové pneumatiky</li></ul>' +
           '</div>' +
-          '<button class="btn-vice" onclick="(function(b){var t=document.getElementById(\'onas-text2\');var o=b.classList.toggle(\'otevreno\');t.style.maxHeight=o?t.scrollHeight+\'px\':\'0\';b.querySelector(\'.label\').textContent=o?\'Méně\':\'Více\';})(this)"><span class="label">Více</span> <span class="sipka">∧</span></button>' +
+          '<button class="btn-vice" onclick="(function(b){var t=document.getElementById(\'onas-text2\');var o=b.classList.toggle(\'otevreno\');t.style.maxHeight=o?t.scrollHeight+\'px\':\'0\';b.querySelector(\'.label\').textContent=o?\'Méně\':\'Více\';})(this)"><span class="label">Více</span><span class="sipka"> ▲</span></button>' +
         '</div>' +
         '<div class="osloupec">' +
           '<h3>Záruka a servis</h3>' +
@@ -83,147 +81,114 @@
     vloz(onas);
 
     // =============================================
-    // 2. RECENZE – AUTO-SCROLL SLIDER (bez šipek, bez teček)
+    // 2. RECENZE – 3-grid, slider šipkami, rozbalovačka
     // =============================================
     var recenzeData = [
-      { jmeno:'mirek', doba:'před 1 měsícem', barva:'#e87722', iniciala:'m', foto:'https://lh3.googleusercontent.com/a/default-user',
+      { jmeno:'mirek', doba:'před 1 měsícem', barva:'#e87722', iniciala:'M',
         text:'Doporučuji navštívit. Ochotně vysvětlí, půjčí, přesvedou 👆' },
       { jmeno:'Radim Ptáček', doba:'před 3 měsíci', barva:'#c0392b', iniciala:'R',
-        text:'U BIOS Import jsem pořídil malotraktor a musím říct, že od prvního kontaktu až po převzetí bylo všechno naprosto perfektní. Oceňuji profesionální a velmi vstřícné jednání – vždy rychlá komunikace, ochota poradit a podrobně vysvětlit vše, na co jsem se ptal. Pomohli mi se vším, co jsem potřeboval, a celý proces proběhl bez jediného zádrhelu.<br><br>Díky nim si už teď spokojeně jezdím na traktůrku a mám jistotu, že jsem vybral správnou firmu. Rozhodně doporučuji! 🚜🙂',
-        dlouhy: true },
+        kratky:'U BIOS Import jsem pořídil malotraktor a musím říct, že od prvního kontaktu až po převzetí bylo všechno naprosto...',
+        plny:'U BIOS Import jsem pořídil malotraktor a musím říct, že od prvního kontaktu až po převzetí bylo všechno naprosto perfektní. Oceňuji profesionální a velmi vstřícné jednání – vždy rychlá komunikace, ochota poradit a podrobně vysvětlit vše, na co jsem se ptal. Pomohli mi se vším, co jsem potřeboval, a celý proces proběhl bez jediného zádrhelu. Díky nim si už teď spokojeně jezdím na traktůrku a mám jistotu, že jsem vybral správnou firmu. Rozhodně doporučuji! 🚜🙂' },
       { jmeno:'Anna Capkova', doba:'před 4 měsíci', barva:'#e87722', iniciala:'A',
-        text:'Dobrá komunikace, seriózní přístup, vstřícné jednání<br>L. S.' },
+        text:'Dobrá komunikace, seriózní přístup, vstřícné jednání. L. S.' },
       { jmeno:'Filip Novák', doba:'před 5 měsíci', barva:'#c0392b', iniciala:'F',
-        text:'Skvělý přístup k zákazníkovi. Na místě poradili, naložili a traktor jsem si mohl vyzkoušet. Opravdu vstřícné jednání pánů majitelů a jejich zaměstnanců. Mohu jen doporučit! Traktory ve vysoké kvalitě provedení.',
-        dlouhy: true },
+        kratky:'Skvělý přístup k zákazníkovi. Na místě poradili, naložili a traktor jsem si mohl vyzkoušet...',
+        plny:'Skvělý přístup k zákazníkovi. Na místě poradili, naložili a traktor jsem si mohl vyzkoušet. Opravdu vstřícné jednání pánů majitelů a jejich zaměstnanců. Mohu jen doporučit! Traktory ve vysoké kvalitě provedení.' },
       { jmeno:'Jiří Vlček', doba:'před 8 měsíci', barva:'#2e7d32', iniciala:'J',
-        text:'Ahoj všem, traktor který jsem chtěl neměli skladem ale po domluvě dle mých představ mi pan majitel nabídl hned 3 traktory z kterých jsem si jeden vybral. Iseki sial 19 s čelním nakladačem. Traktor mám teprve chvilku je opravdu jako nový v každém detajlu, funguje všechno jak má. Dobrá domluva, jak jsme se dohodli tak to bylo. Doporučuji!',
-        dlouhy: true },
+        kratky:'Ahoj všem, traktor který jsem chtěl neměli skladem ale po domluvě mi pan majitel nabídl hned 3 traktory...',
+        plny:'Ahoj všem, traktor který jsem chtěl neměli skladem ale po domluvě dle mých představ mi pan majitel nabídl hned 3 traktory z kterých jsem si jeden vybral. Iseki sial 19 s čelním nakladačem. Traktor mám teprve chvilku je opravdu jako nový v každém detajlu, funguje všechno jak má. Dobrá domluva, jak jsme se dohodli tak to bylo. Doporučuji!' },
       { jmeno:'Jaroslav Opravil', doba:'před 9 měsíci', barva:'#7b4fa6', iniciala:'J',
         text:'Na doporučení majitele firmy jsem si koupil renovovaný traktor Yanmar f18D, se kterým jsem velmi spokojen. Splnil všechny mé představy, proto tuto firmu všem vřele doporučuji.' }
     ];
 
-    var googleSVG = '<svg width="16" height="16" viewBox="0 0 24 24" style="flex-shrink:0;margin-top:1px"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>';
-    var checkSVG = '<svg width="14" height="14" viewBox="0 0 24 24" style="color:#1a73e8;flex-shrink:0"><path fill="#1a73e8" d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>';
+    var gSVG = '<svg width="16" height="16" viewBox="0 0 24 24" style="flex-shrink:0"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>';
+    var chSVG = '<svg width="13" height="13" viewBox="0 0 24 24"><path fill="#1a73e8" d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>';
 
-    var recenzeCards = recenzeData.map(function(r, i) {
-      var previewLen = 120;
-      var jeDolouhy = r.dlouhy && r.text.replace(/<[^>]*>/g,'').length > previewLen;
-      var kratkyText = jeDolouhy ? r.text.replace(/<[^>]*>/g,'').substring(0, previewLen) + '…' : r.text;
+    // Generuj skupiny po 3
+    var pages = [];
+    for (var i = 0; i < recenzeData.length; i += 3) {
+      pages.push(recenzeData.slice(i, i + 3));
+    }
 
-      return '<div class="rk" data-index="' + i + '">' +
-        '<div class="rktop">' +
-          '<div class="rautor">' +
-            '<div class="ravatar" style="background:' + r.barva + ';">' + r.iniciala.toUpperCase() + '</div>' +
-            '<div><div class="rjmeno">' + r.jmeno + '</div><div class="rdoba">' + r.doba + '</div></div>' +
-          '</div>' +
-          googleSVG +
-        '</div>' +
-        '<div class="rhvezdy">★★★★★ ' + checkSVG + '</div>' +
-        '<div class="rtext">' +
-          '<span class="rtshort">' + kratkyText + '</span>' +
-          (jeDolouhy ? '<span class="rtfull" style="display:none;">' + r.text + '</span>' +
-            '<button class="rbtn-more" onclick="(function(b){var k=b.parentNode.querySelector(\'.rtshort\');var f=b.parentNode.querySelector(\'.rtfull\');var open=f.style.display!==\'none\';k.style.display=open?\'inline\':\' none\';f.style.display=open?\'none\':\'inline\';b.textContent=open?\'Přečtěte si více\':\'Skrýt\';})(this)">Přečtěte si více</button>'
+    var pagesHTML = pages.map(function(page, pi) {
+      var cardsHTML = page.map(function(r, ci) {
+        var rid = 'rv-' + pi + '-' + ci;
+        var hasExpand = r.kratky && r.plny;
+        return '<div class="rk">' +
+          '<div class="rktop"><div class="rautor"><div class="ravatar" style="background:' + r.barva + ';">' + r.iniciala + '</div>' +
+          '<div><div class="rjmeno">' + r.jmeno + '</div><div class="rdoba">' + r.doba + '</div></div></div>' + gSVG + '</div>' +
+          '<div class="rhvezdy">★★★★★ ' + chSVG + '</div>' +
+          '<div class="rtext" id="' + rid + '">' + (hasExpand ? r.kratky : r.text) + '</div>' +
+          (hasExpand ?
+            '<button class="rbtn-more" data-id="' + rid + '" data-short="' + encodeURIComponent(r.kratky) + '" data-full="' + encodeURIComponent(r.plny) + '" onclick="(function(b){var id=b.getAttribute(\'data-id\');var el=document.getElementById(id);var open=b.dataset.open===\'1\';el.textContent=decodeURIComponent(open?b.getAttribute(\'data-short\'):b.getAttribute(\'data-full\'));b.textContent=open?\'Přečtěte si více\':\'Skrýt\';b.dataset.open=open?\'0\':\'1\';})(this)">Přečtěte si více</button>'
           : '') +
-        '</div>' +
-      '</div>';
+        '</div>';
+      }).join('');
+      return '<div class="rpage" style="display:' + (pi === 0 ? 'grid' : 'none') + ';" data-page="' + pi + '">' + cardsHTML + '</div>';
     }).join('');
 
     var recenze = document.createElement('section');
     recenze.id = 'recenze-sekce';
     recenze.innerHTML =
       '<style>' +
-      '#recenze-sekce{background:#f8f8f8;padding:60px 20px;font-family:inherit;overflow:hidden;}' +
+      '#recenze-sekce{background:#f8f8f8;padding:60px 20px;font-family:inherit;}' +
       '#recenze-sekce .rh{text-align:center;margin-bottom:40px;}' +
       '#recenze-sekce .rh h2{font-size:2.2em;font-weight:800;color:#1a1a1a;margin:0;}' +
-      '#recenze-sekce .rslider{max-width:1100px;margin:0 auto;position:relative;}' +
-      '#recenze-sekce .rtrack-wrap{overflow:hidden;cursor:grab;}' +
-      '#recenze-sekce .rtrack-wrap:active{cursor:grabbing;}' +
-      '#recenze-sekce .rtrack{display:flex;gap:20px;transition:transform .5s cubic-bezier(.4,0,.2,1);}' +
-      '#recenze-sekce .rk{background:#fff;border-radius:12px;padding:22px;box-shadow:0 2px 10px rgba(0,0,0,.06);min-width:calc(33.333% - 14px);box-sizing:border-box;flex-shrink:0;transition:box-shadow .3s,transform .3s;}' +
+      '#recenze-sekce .rwrap{max-width:1100px;margin:0 auto;}' +
+      '#recenze-sekce .rpage{grid-template-columns:repeat(3,1fr);gap:24px;}' +
+      '@media(max-width:900px){#recenze-sekce .rpage{grid-template-columns:1fr;}}' +
+      '#recenze-sekce .rk{background:#fff;border-radius:12px;padding:24px;box-shadow:0 2px 12px rgba(0,0,0,.07);transition:box-shadow .25s,transform .25s;}' +
       '#recenze-sekce .rk:hover{box-shadow:0 8px 28px rgba(0,0,0,.13);transform:translateY(-3px);}' +
-      '@media(max-width:900px){#recenze-sekce .rk{min-width:calc(50% - 10px);}}' +
-      '@media(max-width:580px){#recenze-sekce .rk{min-width:100%;}}' +
       '#recenze-sekce .rktop{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px;}' +
       '#recenze-sekce .rautor{display:flex;align-items:center;gap:10px;}' +
       '#recenze-sekce .ravatar{width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:1em;color:#fff;flex-shrink:0;}' +
       '#recenze-sekce .rjmeno{font-weight:700;font-size:.93em;color:#1a1a1a;}' +
-      '#recenze-sekce .rdoba{font-size:.8em;color:#999;margin-top:1px;}' +
-      '#recenze-sekce .rhvezdy{color:#f5a623;font-size:1em;margin-bottom:8px;display:flex;align-items:center;gap:5px;}' +
+      '#recenze-sekce .rdoba{font-size:.8em;color:#999;}' +
+      '#recenze-sekce .rhvezdy{color:#f5a623;font-size:1.05em;margin-bottom:10px;display:flex;align-items:center;gap:5px;}' +
       '#recenze-sekce .rtext{font-size:.88em;color:#444;line-height:1.6;}' +
-      '#recenze-sekce .rbtn-more{background:none;border:none;cursor:pointer;color:#999;font-size:.82em;padding:6px 0 0;display:block;font-family:inherit;}' +
-      '#recenze-sekce .rbtn-more:hover{color:#555;}' +
-      '#recenze-sekce .gsummary{text-align:center;font-size:.92em;color:#1a1a1a;margin-top:28px;}' +
+      '#recenze-sekce .rbtn-more{background:none;border:none;cursor:pointer;color:#888;font-size:.82em;padding:6px 0 0;display:block;font-family:inherit;text-align:left;}' +
+      '#recenze-sekce .rbtn-more:hover{color:#333;}' +
+      /* Navigační šipky */
+      '#recenze-sekce .rnav{display:flex;justify-content:center;gap:12px;margin-top:32px;}' +
+      '#recenze-sekce .rnav button{background:#fff;border:2px solid #f5a623;border-radius:50%;width:40px;height:40px;cursor:pointer;font-size:1.1em;display:flex;align-items:center;justify-content:center;color:#f5a623;transition:all .2s;line-height:1;}' +
+      '#recenze-sekce .rnav button:hover{background:#f5a623;color:#fff;}' +
+      '#recenze-sekce .rnav button:disabled{opacity:.3;cursor:default;}' +
+      '#recenze-sekce .gsummary{text-align:center;font-size:.92em;color:#555;margin-top:24px;}' +
       '</style>' +
       '<div class="rh"><h2>Zpětná vazba zákazníků</h2></div>' +
-      '<div class="rslider"><div class="rtrack-wrap" id="rtrack-wrap"><div class="rtrack" id="rtrack">' + recenzeCards + '</div></div></div>' +
+      '<div class="rwrap">' +
+        pagesHTML +
+        '<div class="rnav">' +
+          '<button id="r-prev" disabled>&#8592;</button>' +
+          '<button id="r-next">&#8594;</button>' +
+        '</div>' +
+      '</div>' +
       '<p class="gsummary"><strong>Google</strong> – souhrnné hodnocení <strong>5.0</strong> z 5, na základě <strong>39 hodnocení</strong></p>';
     vloz(recenze);
 
-    // Slider – auto-scroll + drag
+    // Slider logika
     (function() {
-      var wrap = document.getElementById('rtrack-wrap');
-      var track = document.getElementById('rtrack');
-      if (!wrap || !track) return;
+      var curPage = 0;
+      var totalPages = pages.length;
+      var prevBtn = document.getElementById('r-prev');
+      var nextBtn = document.getElementById('r-next');
 
-      var cards = track.querySelectorAll('.rk');
-      var total = cards.length;
-      var current = 0;
-      var isDragging = false;
-      var startX = 0;
-      var scrollLeft = 0;
-      var autoTimer;
-
-      function getPerPage() {
-        return window.innerWidth <= 580 ? 1 : window.innerWidth <= 900 ? 2 : 3;
+      function showPage(n) {
+        document.querySelectorAll('#recenze-sekce .rpage').forEach(function(p) {
+          p.style.display = 'none';
+        });
+        document.querySelector('#recenze-sekce .rpage[data-page="' + n + '"]').style.display = 'grid';
+        curPage = n;
+        prevBtn.disabled = curPage === 0;
+        nextBtn.disabled = curPage === totalPages - 1;
       }
 
-      function getCardWidth() {
-        return cards[0].offsetWidth + 20;
-      }
-
-      function goTo(page) {
-        var perPage = getPerPage();
-        var maxPage = Math.ceil(total / perPage) - 1;
-        current = ((page % (maxPage + 1)) + (maxPage + 1)) % (maxPage + 1);
-        track.style.transform = 'translateX(-' + (current * perPage * getCardWidth()) + 'px)';
-      }
-
-      function startAuto() {
-        autoTimer = setInterval(function() { goTo(current + 1); }, 4000);
-      }
-
-      function stopAuto() { clearInterval(autoTimer); }
-
-      startAuto();
-
-      // Drag / swipe
-      wrap.addEventListener('mousedown', function(e) {
-        isDragging = true;
-        startX = e.pageX;
-        stopAuto();
-      });
-      document.addEventListener('mouseup', function(e) {
-        if (!isDragging) return;
-        isDragging = false;
-        var diff = e.pageX - startX;
-        if (Math.abs(diff) > 50) goTo(diff < 0 ? current + 1 : current - 1);
-        startAuto();
-      });
-      wrap.addEventListener('touchstart', function(e) { startX = e.touches[0].pageX; stopAuto(); }, {passive:true});
-      wrap.addEventListener('touchend', function(e) {
-        var diff = e.changedTouches[0].pageX - startX;
-        if (Math.abs(diff) > 40) goTo(diff < 0 ? current + 1 : current - 1);
-        startAuto();
-      }, {passive:true});
-
-      // Pauza při hover
-      wrap.addEventListener('mouseenter', stopAuto);
-      wrap.addEventListener('mouseleave', startAuto);
+      prevBtn.addEventListener('click', function() { if (curPage > 0) showPage(curPage - 1); });
+      nextBtn.addEventListener('click', function() { if (curPage < totalPages - 1) showPage(curPage + 1); });
     })();
 
     // =============================================
-    // 3. PARTNEŘI
+    // 3. PARTNEŘI – bez pozadí, čisté loga
     // =============================================
     var partneri = document.createElement('section');
     partneri.id = 'partneri-sekce';
@@ -232,8 +197,10 @@
       '#partneri-sekce{background:#f0f0f0;padding:50px 20px;text-align:center;font-family:inherit;}' +
       '#partneri-sekce h2{font-size:2em;font-weight:800;color:#1a1a1a;margin:0 0 40px;}' +
       '#partneri-sekce .pg{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:40px 60px;max-width:1100px;margin:0 auto;}' +
-      '#partneri-sekce .pl img{height:60px;width:auto;max-width:200px;object-fit:contain;transition:all .3s;}' +
-      '#partneri-sekce .pl img:hover{transform:scale(1.08);filter:drop-shadow(0 4px 12px rgba(0,0,0,.18));}' +
+      '#partneri-sekce .pl{background:transparent;display:flex;align-items:center;justify-content:center;}' +
+      /* mix-blend-mode odstraní černé pozadí u PNG log */
+      '#partneri-sekce .pl img{height:55px;width:auto;max-width:180px;object-fit:contain;mix-blend-mode:multiply;transition:transform .3s,filter .3s;filter:grayscale(20%);}' +
+      '#partneri-sekce .pl img:hover{transform:scale(1.08);filter:grayscale(0%) drop-shadow(0 4px 10px rgba(0,0,0,.2));}' +
       '</style>' +
       '<h2>Naši partneři</h2>' +
       '<div class="pg">' +
@@ -245,7 +212,7 @@
     vloz(partneri);
 
     // =============================================
-    // 4. POBOČKY – flex-column karty, mapy bez mezery
+    // 4. POBOČKY
     // =============================================
     var pobocky = document.createElement('section');
     pobocky.id = 'pobocky-sekce';
@@ -269,33 +236,21 @@
       '</style>' +
       '<div class="ph"><h2>Navštivte naše pobočky</h2><p>Vyzkoušejte si naše traktory osobně</p></div>' +
       '<div class="pbg">' +
-        '<div class="pbk">' +
-          '<div class="pbi">' +
-            '<h3>Herálec</h3>' +
-            '<p class="pp">Pobočka a výdejní místo. Malotraktory, příslušenství a servis.</p>' +
-            '<span class="pa">📍 Farma Herálec 134, Herálec, 582 55</span>' +
-            '<div class="po"><strong>Otevírací doba:</strong>Po – Pá 8:00 – 14:00</div>' +
-          '</div>' +
-          '<div class="pbm"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2579.5!2d15.7297!3d49.7583!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x470d8f5b5b5b5b5b%3A0x1!2sFarma+Her%C3%A1lec+134%2C+Her%C3%A1lec+582+55!5e0!3m2!1scs!2scz!4v1" allowfullscreen loading="lazy"></iframe></div>' +
-        '</div>' +
-        '<div class="pbk">' +
-          '<div class="pbi">' +
-            '<h3>Hradec Králové</h3>' +
-            '<p class="pp">Pobočka a výdejní místo. Malotraktory, příslušenství.</p>' +
-            '<span class="pa">📍 Vlčkovická 223/1a, Plačice, 500 04</span>' +
-            '<div class="po"><strong>Otevírací doba:</strong>Po – St – Pá 8:00 – 16:00, Út – Čt 10:00 – 18:00</div>' +
-          '</div>' +
-          '<div class="pbm"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2558.0!2d15.9012!3d50.2227!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x470c2b1a1a1a1a1a%3A0x1!2sVl%C4%8Dovick%C3%A1+223%2F1a%2C+Pla%C4%8Dice+500+04!5e0!3m2!1scs!2scz!4v1" allowfullscreen loading="lazy"></iframe></div>' +
-        '</div>' +
-        '<div class="pbk">' +
-          '<div class="pbi">' +
-            '<h3>Bratislava</h3>' +
-            '<p class="pp">Výdejní místo.</p>' +
-            '<span class="pa">📍 Stará Vajnorská, 831 04</span>' +
-            '<div class="po"><strong>Otevírací doba:</strong>Dle telefonické domluvy.</div>' +
-          '</div>' +
-          '<div class="pbm"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2661.5!2d17.1324!3d48.1762!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x476c89401234abcd%3A0x1!2sStar%C3%A1+Vajnorsk%C3%A1%2C+Bratislava+831+04!5e0!3m2!1scs!2ssk!4v1" allowfullscreen loading="lazy"></iframe></div>' +
-        '</div>' +
+        '<div class="pbk"><div class="pbi">' +
+          '<h3>Herálec</h3><p class="pp">Pobočka a výdejní místo. Malotraktory, příslušenství a servis.</p>' +
+          '<span class="pa">📍 Farma Herálec 134, Herálec, 582 55</span>' +
+          '<div class="po"><strong>Otevírací doba:</strong>Po – Pá 8:00 – 14:00</div>' +
+        '</div><div class="pbm"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2579.5!2d15.7297!3d49.7583!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x470d8f5b5b5b5b5b%3A0x1!2sFarma+Her%C3%A1lec+134%2C+Her%C3%A1lec+582+55!5e0!3m2!1scs!2scz!4v1" allowfullscreen loading="lazy"></iframe></div></div>' +
+        '<div class="pbk"><div class="pbi">' +
+          '<h3>Hradec Králové</h3><p class="pp">Pobočka a výdejní místo. Malotraktory, příslušenství.</p>' +
+          '<span class="pa">📍 Vlčkovická 223/1a, Plačice, 500 04</span>' +
+          '<div class="po"><strong>Otevírací doba:</strong>Po – St – Pá 8:00 – 16:00, Út – Čt 10:00 – 18:00</div>' +
+        '</div><div class="pbm"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2558.0!2d15.9012!3d50.2227!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x470c2b1a1a1a1a1a%3A0x1!2sVl%C4%8Dovick%C3%A1+223%2F1a%2C+Pla%C4%8Dice+500+04!5e0!3m2!1scs!2scz!4v1" allowfullscreen loading="lazy"></iframe></div></div>' +
+        '<div class="pbk"><div class="pbi">' +
+          '<h3>Bratislava</h3><p class="pp">Výdejní místo.</p>' +
+          '<span class="pa">📍 Stará Vajnorská, 831 04</span>' +
+          '<div class="po"><strong>Otevírací doba:</strong>Dle telefonické domluvy.</div>' +
+        '</div><div class="pbm"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2661.5!2d17.1324!3d48.1762!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x476c89401234abcd%3A0x1!2sStar%C3%A1+Vajnorsk%C3%A1%2C+Bratislava+831+04!5e0!3m2!1scs!2ssk!4v1" allowfullscreen loading="lazy"></iframe></div></div>' +
       '</div>';
     vloz(pobocky);
 
@@ -337,13 +292,10 @@
         '<div class="pi">' +
           '<h2>Poptávkový formulář</h2>' +
           '<p class="perex">V případě zájmu o naše produkty nám napište nebo rovnou volejte.</p>' +
-          '<div class="tr">📞 <a href="tel:+420735135242">+420 735 135 242</a></div>' +
-          '<p class="tp">Prodej malotraktorů</p>' +
-          '<div class="tr">📞 <a href="tel:+420735199881">+420 735 199 881</a></div>' +
-          '<p class="tp">Prodej příslušenství, zákaznický servis</p>' +
+          '<div class="tr">📞 <a href="tel:+420735135242">+420 735 135 242</a></div><p class="tp">Prodej malotraktorů</p>' +
+          '<div class="tr">📞 <a href="tel:+420735199881">+420 735 199 881</a></div><p class="tp">Prodej příslušenství, zákaznický servis</p>' +
           '<div class="er">✉ <a href="mailto:info@biosimport.cz">info@biosimport.cz</a></div>' +
-          '<div class="fak">' +
-            '<h3>Fakturační adresa</h3>' +
+          '<div class="fak"><h3>Fakturační adresa</h3>' +
             '<div class="upoz">ℹ️ Pouze pro fakturační účely – nikoli pro doručování zboží!</div>' +
             '<div class="adr">Sídlo firmy, korespondenční adresa:<br>B. Kobzinové 2020, 580 01 Havlíčkův Brod<br>IČ: 17543169, DIČ: CZ17543169</div>' +
           '</div>' +
@@ -363,30 +315,16 @@
       '</div>';
     vloz(poptavka);
 
-    // AJAX odeslání formuláře
     document.getElementById('p-form').addEventListener('submit', function(e) {
       e.preventDefault();
       var btn = this.querySelector('.btn-send');
-      btn.textContent = 'Odesílám...';
-      btn.disabled = true;
+      btn.textContent = 'Odesílám...'; btn.disabled = true;
       fetch('https://formspree.io/f/mbdazjlz', {
-        method: 'POST',
-        body: new FormData(this),
-        headers: { 'Accept': 'application/json' }
+        method:'POST', body:new FormData(this), headers:{'Accept':'application/json'}
       }).then(function(r) {
-        if (r.ok) {
-          document.getElementById('p-form').style.display = 'none';
-          document.getElementById('p-uspech').style.display = 'block';
-        } else {
-          document.getElementById('p-chyba').style.display = 'block';
-          btn.disabled = false;
-          btn.textContent = 'Odeslat poptávku';
-        }
-      }).catch(function() {
-        document.getElementById('p-chyba').style.display = 'block';
-        btn.disabled = false;
-        btn.textContent = 'Odeslat poptávku';
-      });
+        if (r.ok) { document.getElementById('p-form').style.display='none'; document.getElementById('p-uspech').style.display='block'; }
+        else { document.getElementById('p-chyba').style.display='block'; btn.disabled=false; btn.textContent='Odeslat poptávku'; }
+      }).catch(function() { document.getElementById('p-chyba').style.display='block'; btn.disabled=false; btn.textContent='Odeslat poptávku'; });
     });
 
   });
