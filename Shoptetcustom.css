@@ -239,48 +239,47 @@ input[type="search"]:focus {
 }
 
 /* ============================================================
-   BENEFIT BANNER – šedé pozadí + proužky přes celou šířku
+   BENEFIT BANNER – šedé pozadí + zlaté proužky full-width
    ============================================================ */
 
-/* Pozadí a proužky přes celou šířku – outline ignoruje overflow:hidden */
+/* Rodičovský kontejner – zrušení ořezu */
+.position--benefitHomepage {
+    overflow: visible !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    max-width: none !important;
+    width: 100% !important;
+}
+
+/* Samotný banner */
 .benefitBanner {
     background-color: #f8f8f8 !important;
     padding: 20px !important;
     margin: 0 !important;
     box-sizing: border-box !important;
-    /* Outline pro proužky – funguje i přes overflow:hidden rodiče */
-    outline: none !important;
-    border-top: 3px solid #f5a623 !important;
-    border-bottom: 3px solid #f5a623 !important;
-    /* Roztáhnout přes celou šířku */
     width: 100% !important;
     position: relative !important;
+    /* Outline přesahuje přes overflow:hidden rodičů */
+    outline: 3px solid #f5a623 !important;
+    outline-offset: 0 !important;
+    border-top: none !important;
+    border-bottom: none !important;
 }
 
-/* Pseudo-element pro full-width šedé pozadí + proužky */
-.benefitBanner::before {
-    content: '' !important;
-    display: block !important;
-    position: absolute !important;
-    top: -3px !important;
-    bottom: -3px !important;
-    left: -9999px !important;
-    right: -9999px !important;
-    background: #f8f8f8 !important;
-    border-top: 3px solid #f5a623 !important;
-    border-bottom: 3px solid #f5a623 !important;
-    z-index: -1 !important;
+/* Full-width proužky pomocí box-shadow (nepotřebuje overflow) */
+.benefitBanner {
+    box-shadow:
+        0 -3px 0 0 #f5a623,
+        0 3px 0 0 #f5a623 !important;
+    outline: none !important;
 }
 
 .benefitBanner__item {
     display: flex !important;
     align-items: center !important;
     gap: 14px !important;
-    position: relative !important;
-    z-index: 1 !important;
 }
 
-/* Ikony – původní velikost */
 .benefitBanner__picture {
     width: 48px !important;
     height: 48px !important;
@@ -305,13 +304,6 @@ input[type="search"]:focus {
 .benefitBanner__data {
     font-size: 0.85em !important;
     color: #666 !important;
-}
-
-/* Rodičovský obal nesmí ořezávat */
-.position--benefitHomepage {
-    overflow: visible !important;
-    padding: 0 !important;
-    margin: 0 !important;
 }
 
 
