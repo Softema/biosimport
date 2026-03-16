@@ -239,35 +239,65 @@ input[type="search"]:focus {
 }
 
 /* ============================================================
-   BENEFIT BANNER – šedé pozadí + proužky
+   BENEFIT BANNER – šedé pozadí + proužky přes celou šířku stránky
    ============================================================ */
+
+/* Wrapper sekce musí být full-width */
+.position--benefitHomepage,
+.benefitBanner__wrapper {
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow: visible !important;
+}
 
 .benefitBanner {
     background-color: #f8f8f8 !important;
-    border-top: 3px solid #f5a623 !important;
-    border-bottom: 3px solid #f5a623 !important;
-    padding: 20px 0 !important;
+    padding: 24px 20px !important;
     margin: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    position: relative !important;
 }
 
+/* Full-width trik pro pozadí a proužky */
+.benefitBanner::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100vw;
+    height: 100%;
+    background-color: #f8f8f8;
+    border-top: 3px solid #f5a623;
+    border-bottom: 3px solid #f5a623;
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* Položky musí být nad pseudo-elementem */
 .benefitBanner__item {
+    position: relative !important;
+    z-index: 1 !important;
     display: flex !important;
     align-items: center !important;
     gap: 14px !important;
 }
 
 /* Ikony – stejná velikost */
-.benefitBanner__icon {
+.benefitBanner__picture {
     width: 52px !important;
     height: 52px !important;
     min-width: 52px !important;
     flex-shrink: 0 !important;
 }
 
-.benefitBanner__icon svg,
-.benefitBanner__icon img {
+.benefitBanner__picture img,
+.benefitBanner__img {
     width: 52px !important;
     height: 52px !important;
+    object-fit: contain !important;
 }
 
 .benefitBanner__title {
@@ -276,10 +306,12 @@ input[type="search"]:focus {
     color: #1a1a1a !important;
 }
 
-.benefitBanner__description {
+.benefitBanner__description,
+.benefitBanner__data {
     font-size: 0.85em !important;
     color: #666 !important;
 }
+
 
 /* ============================================================
    FORMULÁŘE – focus
@@ -393,4 +425,27 @@ a:hover, a:focus { color: #d4891a !important; }
     border-radius: 10px !important;
     font-weight: 700 !important;
     white-space: nowrap !important;
+}
+
+/* ============================================================
+   BADGE FIRMY.CZ – bílý text (přebití globálního a { color })
+   ============================================================ */
+
+#onas-sekce a.badge,
+#onas-sekce .badge,
+a.badge[href*="firmy.cz"] {
+    background-color: #4caf50 !important;
+    color: #ffffff !important;
+    border-radius: 20px !important;
+    padding: 8px 20px !important;
+    font-weight: 700 !important;
+    text-decoration: none !important;
+    display: inline-block !important;
+    border: none !important;
+}
+
+#onas-sekce a.badge:hover,
+a.badge[href*="firmy.cz"]:hover {
+    background-color: #388e3c !important;
+    color: #ffffff !important;
 }

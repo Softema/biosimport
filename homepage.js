@@ -91,19 +91,20 @@
         plny:'U BIOS Import jsem pořídil malotraktor a musím říct, že od prvního kontaktu až po převzetí bylo všechno naprosto perfektní. Oceňuji profesionální a velmi vstřícné jednání – vždy rychlá komunikace, ochota poradit a podrobně vysvětlit vše, na co jsem se ptal. Pomohli mi se vším, co jsem potřeboval, a celý proces proběhl bez jediného zádrhelu. Díky nim si už teď spokojeně jezdím na traktůrku a mám jistotu, že jsem vybral správnou firmu. Rozhodně doporučuji! 🚜🙂' },
       { jmeno:'Anna Capkova', doba:'před 4 měsíci', barva:'#e87722', iniciala:'A',
         text:'Dobrá komunikace, seriózní přístup, vstřícné jednání. L. S.' },
-      { jmeno:'Filip Novák', doba:'před 5 měsíci', barva:'#c0392b', iniciala:'F',
+      { jmeno:'Filip Novák', doba:'před 6 měsíci', barva:'#c0392b', iniciala:'F',
         kratky:'Skvělý přístup k zákazníkovi. Na místě poradili, naložili a traktor jsem si mohl vyzkoušet...',
         plny:'Skvělý přístup k zákazníkovi. Na místě poradili, naložili a traktor jsem si mohl vyzkoušet. Opravdu vstřícné jednání pánů majitelů a jejich zaměstnanců. Mohu jen doporučit! Traktory ve vysoké kvalitě provedení.' },
       { jmeno:'Jiří Vlček', doba:'před 8 měsíci', barva:'#2e7d32', iniciala:'J',
         kratky:'Ahoj všem, traktor který jsem chtěl neměli skladem ale po domluvě mi pan majitel nabídl hned 3 traktory...',
-        plny:'Ahoj všem, traktor který jsem chtěl neměli skladem ale po domluvě dle mých představ mi pan majitel nabídl hned 3 traktory z kterých jsem si jeden vybral. Iseki sial 19 s čelním nakladačem. Traktor mám teprve chvilku je opravdu jako nový v každém detajlu, funguje všechno jak má. Dobrá domluva, jak jsme se dohodli tak to bylo. Doporučuji!' },
+        plny:'Ahoj všem, traktor který jsem chtěl neměli skladem ale po domluvě dle mých představ mi pan majitel nabídl hned 3 traktory z kterých jsem si jeden vybral. Iseki sial 19 s čelním nakladačem. Traktor mám teprve chvilku je opravdu jako nový v každém detajlu, funguje všechno jak má až provoz ukáže má plnou roční záruku ale věřím že to bude v pohodě. Japonci mají dobrou techniku a zbytek je v obsluze. Koupil jsem i pluh wirax voják a můžu doporučit, krásně oře a to je zarostlé a ve svahu a těžká jilová půda, mám radost. Dobrá domluva, jak jsme se dohodli tak to bylo. Děkuji. Vlček – kdyby někdo chtěl bližší info, rád se podělím o zkušenosti.' },
       { jmeno:'Jaroslav Opravil', doba:'před 9 měsíci', barva:'#7b4fa6', iniciala:'J',
-        text:'Na doporučení majitele firmy jsem si koupil renovovaný traktor Yanmar f18D, se kterým jsem velmi spokojen. Splnil všechny mé představy, proto tuto firmu všem vřele doporučuji.' },
+        kratky:'Na doporučení majitele firmy jsem si koupil renovovaný traktor Yanmar f18D, se kterým jsem velmi spokojen...',
+        plny:'Na doporučení majitele firmy, jsem si koupil renovovaný traktor Yanmar f18D, se kterým jsem velmi spokojen. Splnil všechny mé představy, proto tuto firmu všem vřele doporučuji.' },
       { jmeno:'Sao Rysy', doba:'před 10 měsíci', barva:'#1e8c5a', iniciala:'S',
         text:'Maximální spokojenost a profesionální přístup prodejce. Z celé řady prodejců jsem si lépe vybrat nemohl. Doporučuji.' },
       { jmeno:'Josef Novák', doba:'před 10 měsíci', barva:'#555', iniciala:'J',
         kratky:'Firmu BiosImport mohu jenom doporučit. Vstřícnost, ochota, profesionalita a trpělivost se zákazníkem je v dnešní...',
-        plny:'Firmu BiosImport mohu jenom doporučit. Vstřícnost, ochota, profesionalita a trpělivost se zákazníkem je v dnešní době vzácná. Jsem velmi spokojený zákazník.' }
+        plny:'Firmu BiosImport mohu jenom doporučit. Vstřícnost, ochota, profesionalita a trpělivost se zákazníkem je v dnešní uspěchané době nevídaná. Přeji aby jim nadšení pro svou práci dlouho vydrželo a přinášelo jenom radost.' }
     ];
 
     var gSVG = '<svg width="16" height="16" viewBox="0 0 24 24" style="flex-shrink:0"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>';
@@ -164,7 +165,7 @@
       '<div class="rwrap">' +
         pagesHTML +
         '<div class="rnav">' +
-          '<button id="r-prev" disabled>&#8592;</button>' +
+          '<button id="r-prev">&#8592;</button>' +
           '<button id="r-next">&#8594;</button>' +
         '</div>' +
       '</div>' +
@@ -247,17 +248,17 @@
           '<h3>Herálec</h3><p class="pp">Pobočka a výdejní místo. Malotraktory, příslušenství a servis.</p>' +
           '<span class="pa">📍 Farma Herálec 134, Herálec, 582 55</span>' +
           '<div class="po"><strong>Otevírací doba:</strong>Po – Pá 8:00 – 14:00</div>' +
-        '</div><div class="pbm"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2579.5!2d15.7297!3d49.7583!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x470d8f5b5b5b5b5b%3A0x1!2sFarma+Her%C3%A1lec+134%2C+Her%C3%A1lec+582+55!5e0!3m2!1scs!2scz!4v1" allowfullscreen loading="lazy"></iframe></div></div>' +
+        '</div><div class="pbm"><iframe src="https://maps.google.com/maps?ll=49.532294,15.451173&z=13&t=m&hl=cs&gl=CZ&mapclient=embed&q=Farma+Her%C3%A1lec+134,+Her%C3%A1lec,+582+55&output=embed" allowfullscreen loading="lazy"></iframe></div></div>' +
         '<div class="pbk"><div class="pbi">' +
           '<h3>Hradec Králové</h3><p class="pp">Pobočka a výdejní místo. Malotraktory, příslušenství.</p>' +
           '<span class="pa">📍 Vlčkovická 223/1a, Plačice, 500 04</span>' +
           '<div class="po"><strong>Otevírací doba:</strong>Po – St – Pá 8:00 – 16:00, Út – Čt 10:00 – 18:00</div>' +
-        '</div><div class="pbm"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2558.0!2d15.9012!3d50.2227!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x470c2b1a1a1a1a1a%3A0x1!2sVl%C4%8Dovick%C3%A1+223%2F1a%2C+Pla%C4%8Dice+500+04!5e0!3m2!1scs!2scz!4v1" allowfullscreen loading="lazy"></iframe></div></div>' +
+        '</div><div class="pbm"><iframe src="https://maps.google.com/maps?q=5QVH%2B586,+Hradec+Kr%C3%A1lov%C3%A9,+%C4%8Cesko&ftid=0x470c2b3eab397049:0xfe207e9dd8bc55c0&hl=cs&output=embed" allowfullscreen loading="lazy"></iframe></div></div>' +
         '<div class="pbk"><div class="pbi">' +
           '<h3>Bratislava</h3><p class="pp">Výdejní místo.</p>' +
           '<span class="pa">📍 Stará Vajnorská, 831 04</span>' +
           '<div class="po"><strong>Otevírací doba:</strong>Dle telefonické domluvy.</div>' +
-        '</div><div class="pbm"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2661.5!2d17.1324!3d48.1762!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x476c89401234abcd%3A0x1!2sStar%C3%A1+Vajnorsk%C3%A1%2C+Bratislava+831+04!5e0!3m2!1scs!2ssk!4v1" allowfullscreen loading="lazy"></iframe></div></div>' +
+        '</div><div class="pbm"><iframe src="https://maps.google.com/maps?ll=48.18784,17.175716&z=11&t=m&hl=cs&gl=SK&mapclient=embed&q=Star%C3%A1+Vajnorsk%C3%A1+Bratislava+Slovensko&output=embed" allowfullscreen loading="lazy"></iframe></div></div>' +
       '</div>';
     vloz(pobocky);
 
