@@ -141,7 +141,7 @@
       '#recenze-sekce .rh{text-align:center;margin-bottom:40px;}' +
       '#recenze-sekce .rh h2{font-size:2.2em;font-weight:800;color:#1a1a1a;margin:0;}' +
       '#recenze-sekce .rwrap{max-width:1100px;margin:0 auto;padding:0 10px;}' +
-      '#recenze-sekce .rpage{display:none;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;}' +
+      '#recenze-sekce .rpage{display:none;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;opacity:1;transition:opacity .35s ease;}' +
       '@media(max-width:900px){#recenze-sekce .rpage{grid-template-columns:1fr;}}' +
       '#recenze-sekce .rk{background:#fff;border-radius:12px;padding:24px;box-shadow:0 2px 12px rgba(0,0,0,.07);transition:box-shadow .25s,transform .25s;}' +
       '#recenze-sekce .rk:hover{box-shadow:0 8px 28px rgba(0,0,0,.13);transform:translateY(-3px);}' +
@@ -181,12 +181,21 @@
 
       function showPage(n) {
         // Kolečko – wrap around
-        curPage = ((n % totalPages) + totalPages) % totalPages;
-        document.querySelectorAll('#recenze-sekce .rpage').forEach(function(p) {
-          p.style.display = 'none';
-        });
-        document.querySelector('#recenze-sekce .rpage[data-page="' + curPage + '"]').style.cssText = 'display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;';
-        // Šipky – vždy aktivní (kolečko)
+        var newPage = ((n % totalPages) + totalPages) % totalPages;
+        var current = document.querySelector('#recenze-sekce .rpage[data-page="' + curPage + '"]');
+        var next = document.querySelector('#recenze-sekce .rpage[data-page="' + newPage + '"]');
+        if (!next || newPage === curPage) return;
+        // Fade out current
+        if (current) {
+          current.style.opacity = '0';
+          current.style.transition = 'opacity .3s ease';
+        }
+        setTimeout(function() {
+          if (current) current.style.display = 'none';
+          next.style.cssText = 'display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;opacity:0;transition:opacity .35s ease;';
+          setTimeout(function() { next.style.opacity = '1'; }, 20);
+          curPage = newPage;
+        }, 280);
         prevBtn.disabled = false;
         nextBtn.disabled = false;
       }
@@ -248,12 +257,12 @@
           '<h3>Herálec</h3><p class="pp">Pobočka a výdejní místo. Malotraktory, příslušenství a servis.</p>' +
           '<span class="pa">📍 Farma Herálec 134, Herálec, 582 55</span>' +
           '<div class="po"><strong>Otevírací doba:</strong>Po – Pá 8:00 – 14:00</div>' +
-        '</div><div class="pbm"><iframe src="https://maps.google.com/maps?ll=49.532294,15.451173&z=13&t=m&hl=cs&gl=CZ&mapclient=embed&q=Farma+Her%C3%A1lec+134,+Her%C3%A1lec,+582+55&output=embed" allowfullscreen loading="lazy"></iframe></div></div>' +
+        '</div><div class="pbm"><iframe src="https://maps.google.com/maps?q=49.532294,15.451173&z=15&t=m&hl=cs&gl=CZ&mapclient=embed&output=embed" allowfullscreen loading="lazy"></iframe></div></div>' +
         '<div class="pbk"><div class="pbi">' +
           '<h3>Hradec Králové</h3><p class="pp">Pobočka a výdejní místo. Malotraktory, příslušenství.</p>' +
           '<span class="pa">📍 Vlčkovická 223/1a, Plačice, 500 04</span>' +
           '<div class="po"><strong>Otevírací doba:</strong>Po – St – Pá 8:00 – 16:00, Út – Čt 10:00 – 18:00</div>' +
-        '</div><div class="pbm"><iframe src="https://maps.google.com/maps?q=5QVH%2B586,+Hradec+Kr%C3%A1lov%C3%A9,+%C4%8Cesko&ftid=0x470c2b3eab397049:0xfe207e9dd8bc55c0&hl=cs&output=embed" allowfullscreen loading="lazy"></iframe></div></div>' +
+        '</div><div class="pbm"><iframe src="https://maps.google.com/maps?q=50.2069731,15.8368829&z=16&t=m&hl=cs&gl=CZ&mapclient=embed&output=embed" allowfullscreen loading="lazy"></iframe></div></div>' +
         '<div class="pbk"><div class="pbi">' +
           '<h3>Bratislava</h3><p class="pp">Výdejní místo.</p>' +
           '<span class="pa">📍 Stará Vajnorská, 831 04</span>' +
