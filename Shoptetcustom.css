@@ -313,6 +313,7 @@ main.content,
     height: 58px !important;
     min-width: 58px !important;
     margin-bottom: 10px !important;
+    flex-shrink: 0 !important;
 }
 
 .benefitBanner__picture img,
@@ -335,6 +336,7 @@ main.content,
     margin-bottom: 3px !important;
 }
 
+.benefitBanner__description,
 .benefitBanner__data {
     font-size: 0.76em !important;
     color: #999 !important;

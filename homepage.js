@@ -344,13 +344,5 @@
       }).catch(function() { document.getElementById('p-chyba').style.display='block'; btn.disabled=false; btn.textContent='Odeslat poptávku'; });
     });
 
-  // Oprava mapy Hradec Králové – přesný pin
-  document.querySelectorAll('iframe').forEach(function(iframe) {
-    var src = iframe.src || '';
-    if (src.includes('5QVH') || src.includes('hradec') || src.includes('Hradec') || src.includes('470c2b')) {
-      iframe.src = 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2554.300566194227!2d15.778265599999997!3d50.1929125!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x470c2b3eab397049%3A0xfe207e9dd8bc55c0!2zNVFWSCs1ODYsIEhyYWRlYyBLcsOhbG92w6k!5e0!3m2!1scs!2scz!4v1773692195332!5m2!1scs!2scz';
-    }
-  });
-
   });
 })();
