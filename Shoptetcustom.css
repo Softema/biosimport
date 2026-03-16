@@ -242,36 +242,33 @@ input[type="search"]:focus {
    BENEFIT BANNER – šedé pozadí + zlaté proužky full-width
    ============================================================ */
 
-/* Rodičovský kontejner – zrušení ořezu */
-.position--benefitHomepage {
+/* Shoptet struktura:
+   #content-wrapper.container  (max-width, padding)
+     .content-wrapper-in
+       main#content.wide
+         .benefitBanner.position--benefitHomepage  <-- zde
+*/
+
+/* Zrušit overflow clip na všech rodičích */
+#content-wrapper,
+.content-wrapper-in,
+#content.wide,
+main.content {
     overflow: visible !important;
-    padding: 0 !important;
-    margin: 0 !important;
-    max-width: none !important;
-    width: 100% !important;
 }
 
-/* Samotný banner */
+/* Samotný banner – roztáhnout přes celou šířku viewportu */
 .benefitBanner {
     background-color: #f8f8f8 !important;
+    border-top: 3px solid #f5a623 !important;
+    border-bottom: 3px solid #f5a623 !important;
     padding: 20px !important;
-    margin: 0 !important;
+    margin-left: calc(50% - 50vw) !important;
+    margin-right: calc(50% - 50vw) !important;
+    width: 100vw !important;
+    max-width: 100vw !important;
     box-sizing: border-box !important;
-    width: 100% !important;
     position: relative !important;
-    /* Outline přesahuje přes overflow:hidden rodičů */
-    outline: 3px solid #f5a623 !important;
-    outline-offset: 0 !important;
-    border-top: none !important;
-    border-bottom: none !important;
-}
-
-/* Full-width proužky pomocí box-shadow (nepotřebuje overflow) */
-.benefitBanner {
-    box-shadow:
-        0 -3px 0 0 #f5a623,
-        0 3px 0 0 #f5a623 !important;
-    outline: none !important;
 }
 
 .benefitBanner__item {
