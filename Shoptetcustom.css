@@ -242,27 +242,25 @@ input[type="search"]:focus {
    BENEFIT BANNER – šedé pozadí + proužky přes celou šířku stránky
    ============================================================ */
 
-/* Wrapper – full width, žádný overflow clip */
-.position--benefitHomepage {
+.benefitBanner {
+    background-color: #f8f8f8 !important;
+    padding: 24px 20px !important;
+    margin: 0 !important;
+    box-sizing: border-box !important;
+    /* Proužky – box-shadow roztažené přes celou šířku viewportu */
+    box-shadow:
+        0 -3px 0 0 #f5a623,
+        0 3px 0 0 #f5a623,
+        100vw -3px 0 0 #f5a623,
+        100vw 3px 0 0 #f5a623,
+        -100vw -3px 0 0 #f5a623,
+        -100vw 3px 0 0 #f5a623 !important;
+    /* Roztáhnutí pozadí přes celou šířku */
     width: 100vw !important;
     max-width: 100vw !important;
     margin-left: calc(50% - 50vw) !important;
     margin-right: calc(50% - 50vw) !important;
-    background-color: #f8f8f8 !important;
-    border-top: 3px solid #f5a623 !important;
-    border-bottom: 3px solid #f5a623 !important;
-    padding: 0 !important;
-    box-sizing: border-box !important;
-}
-
-.benefitBanner {
-    background-color: #f8f8f8 !important;
-    padding: 24px 20px !important;
-    margin: 0 auto !important;
-    max-width: 1200px !important;
-    width: 100% !important;
-    box-sizing: border-box !important;
-    border: none !important;
+    position: relative !important;
 }
 
 /* Položky */
@@ -272,7 +270,7 @@ input[type="search"]:focus {
     gap: 14px !important;
 }
 
-/* Ikony – stejná velikost */
+/* Ikony */
 .benefitBanner__picture {
     width: 52px !important;
     height: 52px !important;
@@ -299,6 +297,13 @@ input[type="search"]:focus {
     color: #666 !important;
 }
 
+
+/* Zajisti že rodičovský wrapper benefitBanneru nepřeřezává přesah */
+.position--benefitHomepage {
+    overflow: visible !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
 
 /* ============================================================
    FORMULÁŘE – focus

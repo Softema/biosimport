@@ -262,7 +262,7 @@
           '<h3>Hradec Králové</h3><p class="pp">Pobočka a výdejní místo. Malotraktory, příslušenství.</p>' +
           '<span class="pa">📍 Vlčkovická 223/1a, Plačice, 500 04</span>' +
           '<div class="po"><strong>Otevírací doba:</strong>Po – St – Pá 8:00 – 16:00, Út – Čt 10:00 – 18:00</div>' +
-        '</div><div class="pbm"><iframe src="https://maps.google.com/maps?q=50.2069731,15.8368829&z=16&t=m&hl=cs&gl=CZ&mapclient=embed&output=embed" allowfullscreen loading="lazy"></iframe></div></div>' +
+        '</div><div class="pbm"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2557.0!2d15.8368829!3d50.2069731!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x470c2b3eab397049%3A0xfe207e9dd8bc55c0!2sVl%C4%8Dovick%C3%A1+223%2F1a%2C+Pla%C4%8Dice!5e0!3m2!1scs!2scz!4v1700000003" allowfullscreen loading="lazy"></iframe></div></div>' +
         '<div class="pbk"><div class="pbi">' +
           '<h3>Bratislava</h3><p class="pp">Výdejní místo.</p>' +
           '<span class="pa">📍 Stará Vajnorská, 831 04</span>' +
