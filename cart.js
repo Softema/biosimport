@@ -31,6 +31,17 @@
       }
 
       /* Sekce v prázdném košíku */
+      .cart-inner.cart-empty .empty-cart-boxes {
+        display: flex !important;
+        flex-wrap: wrap !important;
+        gap: 24px !important;
+      }
+
+      .cart-inner.cart-empty .empty-cart-boxes .col-md-6 {
+        flex: 1 1 200px !important;
+        min-width: 180px !important;
+      }
+
       .cart-inner.cart-empty .empty-cart-boxes h3 {
         font-size: 11px !important;
         font-weight: 700 !important;
@@ -131,10 +142,23 @@
       .cart-table .p-name a.main-link:hover { color: #f5a623 !important; }
 
       /* Počet – odebrat stínování */
-      .cart-table .p-quantity input {
+      .cart-table .p-quantity input,
+      .cart-table .p-quantity input[type="text"],
+      .cart-table .p-quantity input[type="number"],
+      .p-quantity input,
+      .amount-spinner input,
+      .amount-container input,
+      input.amount,
+      input.js-item-amount {
         box-shadow: none !important;
         -webkit-box-shadow: none !important;
+        -moz-box-shadow: none !important;
+        outline: none !important;
+        box-shadow: none !important;
+        -webkit-box-shadow: none !important;
+        -moz-box-shadow: none !important;
         border: 1.5px solid #e0e0e0 !important;
+        outline: none !important;
         border-radius: 8px !important;
         text-align: center !important;
         font-weight: 700 !important;
@@ -312,6 +336,28 @@
         color: #1a1a1a !important;
       }
 
+
+      /* Stínování počítadla – odebrat úplně (Shoptet specifické selektory) */
+      .p-quantity .amount-spinner,
+      .p-quantity .amount-spinner input,
+      .p-quantity input.item-amount,
+      .cart-table input[type="text"],
+      .cart-table input[type="number"],
+      .p-quantity .form-control {
+        box-shadow: none !important;
+        -webkit-box-shadow: none !important;
+        -moz-box-shadow: none !important;
+        outline: none !important;
+        border-radius: 8px !important;
+        border: 1.5px solid #e0e0e0 !important;
+        background: #fafafa !important;
+      }
+
+      .p-quantity .amount-spinner {
+        box-shadow: none !important;
+        border: none !important;
+        background: transparent !important;
+      }
       @media (max-width: 500px) {
         .next-step.next-step--cart { flex-direction: column !important; }
         .next-step--cart a.next-step-back,
@@ -344,9 +390,12 @@
     // ══ PRÁZDNÝ KOŠÍK – přidat nové sekce ══
     var emptyBoxes = document.querySelector('.empty-cart-boxes');
     if (emptyBoxes) {
+      // Změnit první sloupec na col-md-4
+      var firstCol = emptyBoxes.querySelector('.col-md-6');
+      if (firstCol) firstCol.className = 'col-md-4';
       // Přidat sekci "Zjistěte více o nás"
       var colOnas = document.createElement('div');
-      colOnas.className = 'col-md-6';
+      colOnas.className = 'col-md-4';
       colOnas.innerHTML = `
         <h3>Zjistěte více o nás</h3>
         <ul>
@@ -357,7 +406,7 @@
 
       // Přidat sekci "Kontaktujte nás"
       var colKontakt = document.createElement('div');
-      colKontakt.className = 'col-md-6';
+      colKontakt.className = 'col-md-4';
       colKontakt.innerHTML = `
         <h3>Kontaktujte nás</h3>
         <ul>
