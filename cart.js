@@ -1,98 +1,148 @@
-// BiosImport – Cart page
+// BiosImport – Cart page styling
+// Targets: /kosik/
 (function() {
   document.addEventListener('DOMContentLoaded', function() {
     var path = window.location.pathname;
-    if (!path.includes('/kosik') && !path.includes('/cart')) return;
+    if (path.indexOf('/kosik') === -1) return;
 
-    // =============================================
-    // CSS
-    // =============================================
     var style = document.createElement('style');
     style.textContent = `
-      /* === PROGRESS STEPS === */
-      .order-process { font-family: inherit; }
 
-      .order-process li .process-title {
-        font-size: 12px !important;
-        font-weight: 600 !important;
-        letter-spacing: 0.04em !important;
+      /* ── PRÁZDNÝ KOŠÍK ── */
+      .cart-inner.cart-empty .h1.cart-heading {
+        font-size: 1.8em !important;
+        font-weight: 900 !important;
+        color: #1a1a1a !important;
+        margin-bottom: 8px !important;
+        letter-spacing: -0.02em !important;
+      }
+
+      .cart-inner.cart-empty .empty-cart-boxes {
+        margin-top: 32px !important;
+      }
+
+      .cart-inner.cart-empty .empty-cart-boxes h3 {
+        font-size: 1em !important;
+        font-weight: 700 !important;
         text-transform: uppercase !important;
+        letter-spacing: 0.08em !important;
+        color: #aaa !important;
+        margin-bottom: 16px !important;
       }
 
-      /* === TABULKA KOŠÍKU – čistá, moderní === */
-      .table-cart {
-        border: none !important;
-        border-collapse: separate !important;
-        border-spacing: 0 !important;
+      .cart-inner.cart-empty .empty-cart-boxes ul {
+        list-style: none !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 10px !important;
+      }
+
+      .cart-inner.cart-empty .empty-cart-boxes ul li a {
+        display: flex !important;
+        align-items: center !important;
+        gap: 12px !important;
+        padding: 16px 20px !important;
+        background: #fff !important;
+        border: 1.5px solid #f0f0f0 !important;
+        border-radius: 12px !important;
+        text-decoration: none !important;
+        font-weight: 700 !important;
+        color: #1a1a1a !important;
+        font-size: 0.97em !important;
+        transition: all 0.2s !important;
+      }
+
+      .cart-inner.cart-empty .empty-cart-boxes ul li a:hover {
+        border-color: #f5a623 !important;
+        background: #fffcf5 !important;
+        transform: translateX(4px) !important;
+        color: #1a1a1a !important;
+      }
+
+      .cart-inner.cart-empty .empty-cart-boxes ul li a::after {
+        content: '→' !important;
+        margin-left: auto !important;
+        color: #f5a623 !important;
+        font-size: 1.1em !important;
+      }
+
+      /* ── TABULKA S PRODUKTY ── */
+      .cart-inner .cart-table {
         width: 100% !important;
+        border-collapse: collapse !important;
       }
 
-      .table-cart thead tr {
-        background: none !important;
-      }
-
-      .table-cart thead th {
-        background: none !important;
-        border-bottom: 1px solid #f0f0f0 !important;
-        border-top: none !important;
+      /* Hlavička tabulky */
+      .cart-table .cart-table-header td {
         padding: 8px 12px 12px !important;
         font-size: 11px !important;
         font-weight: 700 !important;
         letter-spacing: 0.1em !important;
         text-transform: uppercase !important;
-        color: #aaa !important;
+        color: #bbb !important;
+        border-bottom: 1px solid #f0f0f0 !important;
+        border-top: none !important;
       }
 
-      .table-cart tbody tr {
-        background: #fff !important;
-        border: none !important;
+      /* Řádek produktu */
+      .cart-table tr.removeable {
+        border-bottom: 1px solid #f5f5f5 !important;
         transition: background 0.15s !important;
       }
 
-      .table-cart tbody tr:hover {
+      .cart-table tr.removeable:hover {
         background: #fffcf5 !important;
       }
 
-      .table-cart tbody td {
-        border-top: 1px solid #f5f5f5 !important;
-        border-bottom: none !important;
+      .cart-table tr.removeable td {
         padding: 18px 12px !important;
         vertical-align: middle !important;
+        border: none !important;
       }
 
-      /* Obrázek produktu */
-      .table-cart .product-image img {
-        width: 68px !important;
-        height: 68px !important;
+      /* Obrázek */
+      .cart-table .cart-p-image img {
+        width: 72px !important;
+        height: 72px !important;
         object-fit: cover !important;
         border-radius: 10px !important;
         border: 1px solid #f0f0f0 !important;
       }
 
-      /* Název produktu */
-      .table-cart .product-name a {
+      /* Název */
+      .cart-table .p-name a.main-link {
         font-weight: 700 !important;
-        font-size: 0.97em !important;
         color: #1a1a1a !important;
         text-decoration: none !important;
+        font-size: 0.97em !important;
         line-height: 1.4 !important;
+        transition: color 0.15s !important;
       }
-      .table-cart .product-name a:hover { color: #f5a623 !important; }
 
-      /* Dostupnost – "Momentálně nedostupné" */
-      .table-cart .availability {
+      .cart-table .p-name a.main-link:hover {
+        color: #f5a623 !important;
+      }
+
+      /* Dostupnost */
+      .cart-table .p-availability {
         font-size: 0.82em !important;
         font-weight: 600 !important;
       }
 
-      /* Počet */
-      .table-cart .amount input,
-      .table-cart input.amount {
-        border: 1.5px solid #e8e8e8 !important;
-        border-radius: 8px !important;
-        text-align: center !important;
+      /* Počet – wrapper */
+      .cart-table .p-quantity {
+        white-space: nowrap !important;
+      }
+
+      .cart-table .p-quantity input[type="text"],
+      .cart-table .p-quantity input[type="number"] {
         width: 46px !important;
         height: 36px !important;
+        border: 1.5px solid #e0e0e0 !important;
+        border-radius: 8px !important;
+        text-align: center !important;
         font-weight: 700 !important;
         font-size: 14px !important;
         color: #1a1a1a !important;
@@ -100,13 +150,13 @@
         padding: 0 !important;
       }
 
-      .btn-amount {
+      .cart-table .p-quantity .btn-amount {
         background: #f5f5f5 !important;
-        border: 1.5px solid #e8e8e8 !important;
+        border: 1.5px solid #e0e0e0 !important;
         border-radius: 8px !important;
         width: 32px !important;
         height: 36px !important;
-        font-size: 15px !important;
+        font-size: 16px !important;
         font-weight: 700 !important;
         color: #555 !important;
         cursor: pointer !important;
@@ -114,355 +164,186 @@
         display: inline-flex !important;
         align-items: center !important;
         justify-content: center !important;
+        line-height: 1 !important;
       }
-      .btn-amount:hover {
+
+      .cart-table .p-quantity .btn-amount:hover {
         background: #f5a623 !important;
         border-color: #f5a623 !important;
         color: #1a1a1a !important;
       }
 
       /* Cena */
-      .table-cart .price-final strong,
-      .table-cart .price strong {
-        font-weight: 800 !important;
-        font-size: 1em !important;
+      .cart-table .p-price,
+      .cart-table .p-total {
+        font-weight: 700 !important;
         color: #1a1a1a !important;
+        font-size: 0.97em !important;
       }
 
-      /* Odstranit */
-      .table-cart .remove a,
-      .table-cart a.remove {
+      /* Smazat – tlačítko delete */
+      .cart-table .delete-cart-item button,
+      .cart-table .delete-cart-item input[type="submit"] {
+        background: none !important;
+        border: none !important;
         color: #ddd !important;
-        font-size: 18px !important;
-        text-decoration: none !important;
-        transition: color 0.15s !important;
-        display: inline-flex !important;
-        align-items: center !important;
-        justify-content: center !important;
-        width: 28px !important;
-        height: 28px !important;
-        border-radius: 50% !important;
+        font-size: 20px !important;
+        cursor: pointer !important;
+        padding: 4px 8px !important;
+        border-radius: 6px !important;
+        transition: all 0.15s !important;
+        line-height: 1 !important;
       }
-      .table-cart .remove a:hover,
-      .table-cart a.remove:hover {
+
+      .cart-table .delete-cart-item button:hover,
+      .cart-table .delete-cart-item input[type="submit"]:hover {
         color: #e53935 !important;
         background: #ffeaea !important;
       }
 
-      /* === SOUHRN KOŠÍKU === */
-      .cart-summary-row,
-      .total-cart-row {
-        border-top: 2px solid #f5f5f5 !important;
-        padding-top: 20px !important;
-        margin-top: 12px !important;
-      }
-
-      /* Doprava zdarma */
-      .free-delivery-info,
-      [class*="free-delivery"],
-      [class*="free-shipping"] {
+      /* ── DOPRAVA ZDARMA ── */
+      .extra.delivery {
         display: inline-flex !important;
         align-items: center !important;
-        gap: 6px !important;
+        gap: 8px !important;
         background: #e8f5e9 !important;
         color: #2e7d32 !important;
-        padding: 7px 14px !important;
+        padding: 8px 16px !important;
         border-radius: 20px !important;
-        font-size: 0.82em !important;
+        font-size: 0.85em !important;
+        font-weight: 700 !important;
+        margin-top: 16px !important;
+      }
+
+      .extra.delivery strong {
+        color: #2e7d32 !important;
         font-weight: 700 !important;
       }
 
-      /* Celková cena */
-      .total-price,
-      .cart-total,
-      .price-total {
-        font-size: 1.9em !important;
-        font-weight: 900 !important;
-        color: #1a1a1a !important;
-        letter-spacing: -0.02em !important;
+      /* ── CELKOVÁ CENA ── */
+      .price-wrapper {
+        background: #fff !important;
+        border-radius: 14px !important;
+        border: 1.5px solid #f0f0f0 !important;
+        padding: 24px !important;
+        margin-bottom: 16px !important;
       }
 
-      /* === TLAČÍTKA === */
+      .price-wrapper .price-label.price-primary {
+        display: block !important;
+        font-size: 11px !important;
+        font-weight: 700 !important;
+        text-transform: uppercase !important;
+        letter-spacing: 0.1em !important;
+        color: #aaa !important;
+        margin-bottom: 6px !important;
+      }
+
+      .price-wrapper .price.price-primary {
+        display: block !important;
+        font-size: 2.2em !important;
+        font-weight: 900 !important;
+        color: #1a1a1a !important;
+        letter-spacing: -0.03em !important;
+      }
+
+      /* ── TLAČÍTKA ── */
+      .next-step.next-step--cart {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 10px !important;
+      }
+
       /* Zpět do obchodu */
-      .btn-back,
-      a.btn-back,
-      [data-testid="cartBackButton"] {
+      .next-step--cart a.next-step-back {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        padding: 13px 20px !important;
         background: #fff !important;
-        color: #555 !important;
         border: 1.5px solid #e0e0e0 !important;
         border-radius: 10px !important;
-        padding: 13px 24px !important;
+        color: #555 !important;
         font-weight: 600 !important;
         font-size: 13px !important;
         text-decoration: none !important;
-        letter-spacing: 0.02em !important;
-        transition: all 0.2s !important;
         text-transform: none !important;
+        letter-spacing: 0 !important;
+        transition: all 0.2s !important;
       }
-      .btn-back:hover, a.btn-back:hover {
+
+      .next-step--cart a.next-step-back:hover {
         border-color: #ccc !important;
         color: #1a1a1a !important;
         background: #f8f8f8 !important;
       }
 
       /* Pokračovat */
-      .btn-cart-checkout,
-      .btn-order,
-      [data-testid="cartCheckoutButton"] {
+      .next-step--cart a.next-step-forward,
+      .next-step--cart a.btn-conversion {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        padding: 15px 20px !important;
         background: #f5a623 !important;
-        color: #1a1a1a !important;
         border: none !important;
         border-radius: 10px !important;
-        padding: 13px 28px !important;
-        font-weight: 800 !important;
-        font-size: 13px !important;
-        letter-spacing: 0.06em !important;
-        text-transform: uppercase !important;
-        transition: all 0.2s !important;
-        cursor: pointer !important;
-      }
-      .btn-cart-checkout:hover,
-      .btn-order:hover {
-        background: #d4891a !important;
-        transform: translateY(-1px) !important;
-        box-shadow: 0 4px 16px rgba(245,166,35,0.35) !important;
-      }
-
-      /* === SKRYTÍ JÁRA CIMRMAN === */
-      [data-testid="cartCustomerInfo"],
-      [data-testid="cartContactInfo"],
-      .cart-customer-info,
-      .customer-data {
-        display: none !important;
-      }
-
-      /* === PRÁZDNÝ KOŠÍK === */
-      #bi-empty-cart {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding: 100px 20px 60px;
-        text-align: center;
-        animation: fadeUp 0.5s ease;
-      }
-
-      @keyframes fadeUp {
-        from { opacity: 0; transform: translateY(20px); }
-        to   { opacity: 1; transform: translateY(0); }
-      }
-
-      #bi-empty-cart .ec-bag {
-        width: 100px;
-        height: 100px;
-        background: #fff8ee;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-bottom: 32px;
-        border: 2px solid #fde8bb;
-      }
-
-      #bi-empty-cart h2 {
-        font-size: 1.8em !important;
-        font-weight: 900 !important;
         color: #1a1a1a !important;
-        margin: 0 0 14px !important;
-        letter-spacing: -0.02em !important;
+        font-weight: 800 !important;
+        font-size: 14px !important;
+        text-decoration: none !important;
+        text-transform: uppercase !important;
+        letter-spacing: 0.06em !important;
+        transition: all 0.2s !important;
+        box-shadow: 0 4px 16px rgba(245,166,35,0.25) !important;
       }
 
-      #bi-empty-cart p {
-        color: #999;
-        font-size: 0.95em;
-        line-height: 1.7;
-        max-width: 380px;
-        margin: 0 0 40px;
+      .next-step--cart a.next-step-forward:hover,
+      .next-step--cart a.btn-conversion:hover {
+        background: #d4891a !important;
+        transform: translateY(-2px) !important;
+        box-shadow: 0 6px 20px rgba(245,166,35,0.4) !important;
+        color: #1a1a1a !important;
       }
 
-      #bi-empty-cart .ec-actions {
-        display: flex;
-        gap: 12px;
-        flex-wrap: wrap;
-        justify-content: center;
-      }
+      /* ── RESPONZIVITA ── */
+      @media (max-width: 768px) {
+        .cart-table .cart-table-header { display: none !important; }
 
-      #bi-empty-cart .ec-btn-primary {
-        background: #f5a623;
-        color: #1a1a1a;
-        font-weight: 800;
-        font-size: 14px;
-        padding: 14px 28px;
-        border-radius: 10px;
-        text-decoration: none;
-        letter-spacing: 0.04em;
-        text-transform: uppercase;
-        transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-      }
-      #bi-empty-cart .ec-btn-primary:hover {
-        background: #d4891a;
-        color: #1a1a1a;
-        transform: translateY(-2px);
-        box-shadow: 0 6px 20px rgba(245,166,35,0.3);
-      }
+        .cart-table tr.removeable {
+          display: grid !important;
+          grid-template-columns: 80px 1fr auto !important;
+          grid-template-rows: auto auto !important;
+          gap: 4px 12px !important;
+          padding: 16px 0 !important;
+        }
 
-      #bi-empty-cart .ec-btn-secondary {
-        background: #fff;
-        color: #555;
-        font-weight: 600;
-        font-size: 14px;
-        padding: 14px 28px;
-        border-radius: 10px;
-        text-decoration: none;
-        border: 1.5px solid #e0e0e0;
-        transition: all 0.2s;
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-      }
-      #bi-empty-cart .ec-btn-secondary:hover {
-        border-color: #bbb;
-        color: #1a1a1a;
-        background: #f8f8f8;
-      }
+        .cart-table tr.removeable td {
+          padding: 4px 8px !important;
+        }
 
-      #bi-empty-cart .ec-suggestions {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 12px;
-        max-width: 560px;
-        margin-top: 52px;
-        width: 100%;
-      }
-
-      #bi-empty-cart .ec-suggestion {
-        background: #fff;
-        border: 1.5px solid #f0f0f0;
-        border-radius: 12px;
-        padding: 18px 14px;
-        text-align: center;
-        text-decoration: none;
-        transition: all 0.2s;
-      }
-      #bi-empty-cart .ec-suggestion:hover {
-        border-color: #f5a623;
-        background: #fffcf5;
-        transform: translateY(-2px);
-        box-shadow: 0 4px 16px rgba(245,166,35,0.15);
-      }
-
-      #bi-empty-cart .ec-suggestion span {
-        display: block;
-        font-size: 22px;
-        margin-bottom: 8px;
-      }
-
-      #bi-empty-cart .ec-suggestion strong {
-        display: block;
-        font-size: 12px;
-        font-weight: 700;
-        color: #1a1a1a;
-        text-transform: uppercase;
-        letter-spacing: 0.06em;
-      }
-
-      #bi-empty-cart .ec-suggestion em {
-        display: block;
-        font-size: 11px;
-        font-style: normal;
-        color: #aaa;
-        margin-top: 3px;
-      }
-
-      @media (max-width: 600px) {
-        #bi-empty-cart .ec-suggestions { grid-template-columns: 1fr 1fr; }
-        #bi-empty-cart { padding: 60px 16px 40px; }
-        #bi-empty-cart h2 { font-size: 1.5em !important; }
+        .price-wrapper .price.price-primary {
+          font-size: 1.7em !important;
+        }
       }
     `;
     document.head.appendChild(style);
 
-    // =============================================
-    // SKRYTÍ JÁRA CIMRMAN
-    // =============================================
-    function hideContactInfo() {
-      document.querySelectorAll('*').forEach(function(el) {
-        if (el.childElementCount > 0) return;
+    // ── SKRYTÍ JÁRA CIMRMAN ──
+    // Najde jakýkoliv element obsahující jen telefonní číslo nebo jméno
+    function hideContactJunk() {
+      var all = document.querySelectorAll('p, span, div, li');
+      all.forEach(function(el) {
+        if (el.children.length > 0) return;
         var t = el.textContent.trim();
-        if (t.length < 3 || t.length > 100) return;
-        if (
-          /cimrman/i.test(t) ||
-          /jára/i.test(t) ||
-          /^\+?\d[\d\s\-]{7,}$/.test(t)
-        ) {
-          var box = el.closest('.cart-customer-info, .customer-data, [class*="contact-info"], [class*="customer"]');
-          if (box) { box.style.display = 'none'; return; }
-          var p = el.parentElement;
-          if (p && p !== document.body) p.style.display = 'none';
+        if (/cimrman/i.test(t) || /^\+?[\d\s\-\.]{9,15}$/.test(t)) {
+          var parent = el.parentElement;
+          if (parent) parent.style.display = 'none';
         }
       });
     }
-    hideContactInfo();
-    setTimeout(hideContactInfo, 800);
-
-    // =============================================
-    // PRÁZDNÝ KOŠÍK
-    // =============================================
-    var isEmpty = document.querySelector(
-      '.cart-empty, [class*="empty-cart"], [data-testid="cartEmpty"], .page-cart-empty'
-    );
-    // také detekce – žádné řádky v tabulce
-    var cartTable = document.querySelector('.table-cart tbody');
-    if (!isEmpty && cartTable && cartTable.querySelectorAll('tr').length === 0) {
-      isEmpty = cartTable.closest('section, .cart-content, main') || cartTable.parentElement;
-    }
-
-    if (isEmpty) {
-      var ec = document.createElement('div');
-      ec.id = 'bi-empty-cart';
-      ec.innerHTML = `
-        <div class="ec-bag">
-          <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#f5a623" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/>
-            <line x1="3" y1="6" x2="21" y2="6"/>
-            <path d="M16 10a4 4 0 01-8 0"/>
-          </svg>
-        </div>
-        <h2>Košík je prázdný</h2>
-        <p>Zatím jste nevybrali žádný produkt. Prohlédněte si naši nabídku malotraktorů, minibagr nebo příslušenství.</p>
-        <div class="ec-actions">
-          <a href="/malotraktory/" class="ec-btn-primary">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-            Malotraktory
-          </a>
-          <a href="/minibagry-2/" class="ec-btn-secondary">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-            Minibagry
-          </a>
-        </div>
-        <div class="ec-suggestions">
-          <a href="/malotraktory/" class="ec-suggestion">
-            <span>🚜</span>
-            <strong>Malotraktory</strong>
-            <em>Kubota, Iseki, Yanmar</em>
-          </a>
-          <a href="/minibagry-2/" class="ec-suggestion">
-            <span>🏗️</span>
-            <strong>Minibagry</strong>
-            <em>Rhinoceros</em>
-          </a>
-          <a href="/prislusenstvi/" class="ec-suggestion">
-            <span>🔧</span>
-            <strong>Příslušenství</strong>
-            <em>Rotavátory, pluhy…</em>
-          </a>
-        </div>
-      `;
-      isEmpty.innerHTML = '';
-      isEmpty.appendChild(ec);
-    }
+    hideContactJunk();
+    setTimeout(hideContactJunk, 600);
 
   });
 })();
