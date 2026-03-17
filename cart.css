@@ -1,0 +1,51 @@
+/* BiosImport – Košík */
+
+/* 3 sloupce v prázdném košíku */
+.cart-inner.cart-empty .empty-cart-boxes {
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  gap: 20px !important;
+  align-items: flex-start !important;
+}
+
+.cart-inner.cart-empty .empty-cart-boxes > div {
+  flex: 1 1 0 !important;
+  min-width: 0 !important;
+  max-width: none !important;
+  width: auto !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  float: none !important;
+}
+
+@media (max-width: 768px) {
+  .cart-inner.cart-empty .empty-cart-boxes {
+    flex-wrap: wrap !important;
+  }
+  .cart-inner.cart-empty .empty-cart-boxes > div {
+    flex: 0 0 100% !important;
+  }
+}
+
+/* Stínování počítadla pryč */
+.cart-table .p-quantity input,
+.cart-table input[type="text"],
+.cart-table input[type="number"],
+.p-quantity .form-control,
+.amount-spinner input,
+.item-amount {
+  box-shadow: none !important;
+  -webkit-box-shadow: none !important;
+  -moz-box-shadow: none !important;
+  outline: none !important;
+  border-radius: 8px !important;
+  border: 1.5px solid #e0e0e0 !important;
+  background: #fafafa !important;
+}
+
+.p-quantity .amount-spinner {
+  box-shadow: none !important;
+  -webkit-box-shadow: none !important;
+  border: none !important;
+  background: transparent !important;
+}
