@@ -1,47 +1,68 @@
-/* 1. Obal celého prvku pro výběr množství */
+/* 1. Obal celého prvku (čistý a sjednocený) */
 .quantity {
-  box-shadow: none !important;
-  -webkit-box-shadow: none !important;
-  border: 1.5px solid #e0e0e0 !important;
-  border-radius: 10px !important;
-  background: #fff !important;
-  overflow: hidden !important;
-  display: inline-flex !important;
-  align-items: center !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    height: 40px !important; /* Pevná výška zarovná vše do jedné linie */
+    border: 1.5px solid #e0e0e0 !important;
+    border-radius: 10px !important;
+    background: #fff !important;
+    overflow: hidden !important;
+    box-shadow: none !important;
 }
 
-/* 2. Vstupní pole pro samotné číslo */
+/* 2. Vstupní pole pro číslo (odstranění vnitřních rámečků) */
 .quantity label,
 .quantity input.amount {
-  box-shadow: none !important;
-  -webkit-box-shadow: none !important;
-  border: none !important;
-  background: transparent !important;
-  outline: none !important;
-  -webkit-appearance: textfield !important;
-  appearance: textfield !important;
-  text-align: center !important; /* Zarovná číslo hezky doprostřed mezi tlačítka */
-  margin: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    height: 100% !important;
+    width: 45px !important; 
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important; /* Odstraní ten vnitřní rámeček z obrázku */
+    background: transparent !important;
+    box-shadow: none !important;
+    text-align: center !important;
+    font-size: 16px !important;
+    font-weight: bold !important;
+    outline: none !important;
+    appearance: textfield !important;
 }
 
-/* 3. Samotná tlačítka + a - (vycentrování znaků) */
+/* 3. Tlačítka + a - */
 .quantity .increase,
 .quantity .decrease {
-  display: inline-flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  height: 100% !important;
-  min-height: 36px !important; /* Drží tlačítka dostatečně velká pro kliknutí */
-  padding: 0 12px !important;
-  background: transparent !important;
-  border: none !important;
-  cursor: pointer !important;
-  line-height: 1 !important;
-  transition: background-color 0.2s ease !important; /* Plynulý přechod pro hover efekt */
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 36px !important;
+    height: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    background: transparent !important;
+    border: none !important;
+    cursor: pointer !important;
+    transition: background-color 0.2s ease !important;
 }
 
-/* 4. Hover efekt při najetí myší na tlačítka */
+/* 4. ČIŠTĚNÍ: Samotné znaky uvnitř tlačítek (toto řeší problém z obrázku) */
+.quantity .increase__sign,
+.quantity .decrease__sign {
+    position: static !important; /* Vyruší absolutní pozici z původní šablony */
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    line-height: 1 !important;
+    font-size: 20px !important;
+    font-weight: normal !important;
+    transform: none !important; /* Zruší případné posuny (translate) */
+}
+
+/* 5. Hover efekt */
 .quantity .increase:hover,
 .quantity .decrease:hover {
-  background-color: #f0f0f0 !important; /* Lehké zšednutí pozadí po najetí */
+    background-color: #f0f0f0 !important;
 }
