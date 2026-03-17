@@ -30,16 +30,34 @@
         margin-bottom: 8px !important;
       }
 
-      /* Sekce v prázdném košíku */
+      /* Sekce v prázdném košíku – 3 sloupce */
       .cart-inner.cart-empty .empty-cart-boxes {
         display: flex !important;
-        flex-wrap: wrap !important;
+        flex-wrap: nowrap !important;
         gap: 24px !important;
+        align-items: flex-start !important;
       }
 
-      .cart-inner.cart-empty .empty-cart-boxes .col-md-6 {
-        flex: 1 1 200px !important;
-        min-width: 180px !important;
+      .cart-inner.cart-empty .empty-cart-boxes > div,
+      .cart-inner.cart-empty .empty-cart-boxes .col-md-6,
+      .cart-inner.cart-empty .empty-cart-boxes .col-md-4 {
+        flex: 1 1 0 !important;
+        min-width: 0 !important;
+        width: auto !important;
+        max-width: none !important;
+        padding: 0 !important;
+        float: none !important;
+      }
+
+      @media (max-width: 768px) {
+        .cart-inner.cart-empty .empty-cart-boxes {
+          flex-wrap: wrap !important;
+        }
+        .cart-inner.cart-empty .empty-cart-boxes > div,
+        .cart-inner.cart-empty .empty-cart-boxes .col-md-6,
+        .cart-inner.cart-empty .empty-cart-boxes .col-md-4 {
+          flex: 0 0 100% !important;
+        }
       }
 
       .cart-inner.cart-empty .empty-cart-boxes h3 {
