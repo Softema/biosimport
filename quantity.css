@@ -1,8 +1,21 @@
-/* 1. Obal celého prvku (čistý a sjednocený) */
-.quantity {
+/* 1. ČIŠTĚNÍ: Odstranění zdvojených znaků (ikon) z původní šablony */
+.quantity-form .quantity .increase::before,
+.quantity-form .quantity .increase::after,
+.quantity-form .quantity .decrease::before,
+.quantity-form .quantity .decrease::after,
+.quantity-form .quantity .increase__sign::before,
+.quantity-form .quantity .increase__sign::after,
+.quantity-form .quantity .decrease__sign::before,
+.quantity-form .quantity .decrease__sign::after {
+    display: none !important;
+    content: none !important;
+}
+
+/* 2. Obal celého prvku */
+.quantity-form .quantity {
     display: inline-flex !important;
     align-items: center !important;
-    height: 40px !important; /* Pevná výška zarovná vše do jedné linie */
+    height: 40px !important;
     border: 1.5px solid #e0e0e0 !important;
     border-radius: 10px !important;
     background: #fff !important;
@@ -10,9 +23,9 @@
     box-shadow: none !important;
 }
 
-/* 2. Vstupní pole pro číslo (odstranění vnitřních rámečků) */
-.quantity label,
-.quantity input.amount {
+/* 3. Vstupní pole pro číslo */
+.quantity-form .quantity label,
+.quantity-form .quantity input.amount {
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
@@ -20,7 +33,7 @@
     width: 45px !important; 
     margin: 0 !important;
     padding: 0 !important;
-    border: none !important; /* Odstraní ten vnitřní rámeček z obrázku */
+    border: none !important;
     background: transparent !important;
     box-shadow: none !important;
     text-align: center !important;
@@ -30,9 +43,9 @@
     appearance: textfield !important;
 }
 
-/* 3. Tlačítka + a - */
-.quantity .increase,
-.quantity .decrease {
+/* 4. Tlačítka + a - */
+.quantity-form .quantity .increase,
+.quantity-form .quantity .decrease {
     display: inline-flex !important;
     align-items: center !important;
     justify-content: center !important;
@@ -44,12 +57,13 @@
     border: none !important;
     cursor: pointer !important;
     transition: background-color 0.2s ease !important;
+    text-indent: 0 !important;
 }
 
-/* 4. ČIŠTĚNÍ: Samotné znaky uvnitř tlačítek (toto řeší problém z obrázku) */
-.quantity .increase__sign,
-.quantity .decrease__sign {
-    position: static !important; /* Vyruší absolutní pozici z původní šablony */
+/* 5. Samotné čisté znaky uvnitř tlačítek */
+.quantity-form .quantity .increase__sign,
+.quantity-form .quantity .decrease__sign {
+    position: static !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
@@ -58,11 +72,12 @@
     line-height: 1 !important;
     font-size: 20px !important;
     font-weight: normal !important;
-    transform: none !important; /* Zruší případné posuny (translate) */
+    transform: none !important;
+    color: #000 !important;
 }
 
-/* 5. Hover efekt */
-.quantity .increase:hover,
-.quantity .decrease:hover {
+/* 6. Hover efekt */
+.quantity-form .quantity .increase:hover,
+.quantity-form .quantity .decrease:hover {
     background-color: #f0f0f0 !important;
 }
