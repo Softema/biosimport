@@ -1,47 +1,47 @@
+/* 1. Obal celého prvku pro výběr množství */
 .quantity {
-  display: flex !important;
-  align-items: center !important;
-  height: 38px !important;
-  width: 120px !important;
+  box-shadow: none !important;
+  -webkit-box-shadow: none !important;
   border: 1.5px solid #e0e0e0 !important;
   border-radius: 10px !important;
+  background: #fff !important;
   overflow: hidden !important;
+  display: inline-flex !important;
+  align-items: center !important;
+}
+
+/* 2. Vstupní pole pro samotné číslo */
+.quantity label,
+.quantity input.amount {
   box-shadow: none !important;
   -webkit-box-shadow: none !important;
-}
-
-.increase-tooltip,
-.decrease-tooltip {
-  display: none !important;
-}
-
-.quantity .decrease {
-  order: 1 !important;
-}
-
-.quantity label {
-  order: 2 !important;
-  flex: 1 !important;
-}
-
-.quantity .increase {
-  order: 3 !important;
-}
-
-.quantity .increase,
-.quantity .decrease {
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  padding: 0 12px !important;
   border: none !important;
   background: transparent !important;
-  height: 100% !important;
-  box-shadow: none !important;
-  -webkit-box-shadow: none !important;
+  outline: none !important;
+  -webkit-appearance: textfield !important;
+  appearance: textfield !important;
+  text-align: center !important; /* Zarovná číslo hezky doprostřed mezi tlačítka */
+  margin: 0 !important;
 }
 
-.increase__sign,
-.decrease__sign {
+/* 3. Samotná tlačítka + a - (vycentrování znaků) */
+.quantity .increase,
+.quantity .decrease {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  height: 100% !important;
+  min-height: 36px !important; /* Drží tlačítka dostatečně velká pro kliknutí */
+  padding: 0 12px !important;
+  background: transparent !important;
+  border: none !important;
+  cursor: pointer !important;
   line-height: 1 !important;
+  transition: background-color 0.2s ease !important; /* Plynulý přechod pro hover efekt */
+}
+
+/* 4. Hover efekt při najetí myší na tlačítka */
+.quantity .increase:hover,
+.quantity .decrease:hover {
+  background-color: #f0f0f0 !important; /* Lehké zšednutí pozadí po najetí */
 }
