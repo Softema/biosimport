@@ -222,7 +222,7 @@
       '<h2>Naši partneři</h2>' +
       '<div class="pg">' +
         '<div class="pl"><img src="' + CDN + 'zeppelin_logo.svg" alt="Zeppelin"></div>' +
-        '<div class="pl"><img src="' + CDN + 'logo_galaxy-removebg-preview.png" alt="Galaxy Agricultural Machinery"></div>' +
+        '<div class="pl"><img src="' + CDN + 'logo_galaxy.png" alt="Galaxy Agricultural Machinery"></div>' +
         '<div class="pl"><img src="' + CDN + 'rhinoceros-tractor-logo.webp" alt="Rhinoceros Tractor"></div>' +
         '<div class="pl"><img src="' + CDN + 'images-removebg-preview.png" alt="Vares"></div>' +
       '</div>';
