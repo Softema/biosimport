@@ -387,36 +387,37 @@
     hideJara();
     setTimeout(hideJara, 500);
 
-    // ══ PRÁZDNÝ KOŠÍK – přidat nové sekce ══
-    var emptyBoxes = document.querySelector('.empty-cart-boxes');
-    if (emptyBoxes) {
-      // Změnit první sloupec na col-md-4
+    // ══ PRÁZDNÝ KOŠÍK – přidat nové sekce + MutationObserver pro AJAX refresh ══
+    function addEmptySections() {
+      var emptyBoxes = document.querySelector('.empty-cart-boxes');
+      if (!emptyBoxes) return;
+      if (emptyBoxes.querySelector('.bi-added')) return; // nepřidávat duplicitně
+
       var firstCol = emptyBoxes.querySelector('.col-md-6');
       if (firstCol) firstCol.className = 'col-md-4';
-      // Přidat sekci "Zjistěte více o nás"
-      var colOnas = document.createElement('div');
-      colOnas.className = 'col-md-4';
-      colOnas.innerHTML = `
-        <h3>Zjistěte více o nás</h3>
-        <ul>
-          <li><a href="/o-nas/">O nás</a></li>
-          <li><a href="/pobocky/">Pobočky</a></li>
-        </ul>
-      `;
 
-      // Přidat sekci "Kontaktujte nás"
+      var colOnas = document.createElement('div');
+      colOnas.className = 'col-md-4 bi-added';
+      colOnas.innerHTML = '<h3>Zjistěte více o nás</h3><ul><li><a href="/o-nas/">O nás</a></li><li><a href="/pobocky/">Pobočky</a></li></ul>';
+
       var colKontakt = document.createElement('div');
-      colKontakt.className = 'col-md-4';
-      colKontakt.innerHTML = `
-        <h3>Kontaktujte nás</h3>
-        <ul>
-          <li><a href="/kontakt/">Kontakt</a></li>
-        </ul>
-      `;
+      colKontakt.className = 'col-md-4 bi-added';
+      colKontakt.innerHTML = '<h3>Kontaktujte nás</h3><ul><li><a href="/kontakt/">Kontakt</a></li></ul>';
 
       emptyBoxes.appendChild(colOnas);
       emptyBoxes.appendChild(colKontakt);
+      hideJara();
     }
+
+    addEmptySections();
+
+    // Po AJAX refreshi (odebrání produktu) Shoptet překreslí košík – sledujeme změny
+    var observer = new MutationObserver(function() {
+      addEmptySections();
+      hideJara();
+    });
+    var target = document.querySelector('.cart-wrapper, .content-inner, #content');
+    if (target) observer.observe(target, { childList: true, subtree: true });
 
   });
 })();
