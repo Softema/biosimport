@@ -239,9 +239,9 @@
       '#pobocky-sekce .ph{text-align:center;margin-bottom:40px;}' +
       '#pobocky-sekce .ph h2{font-size:2.2em;font-weight:800;color:#1a1a1a;margin:0 0 10px;}' +
       '#pobocky-sekce .ph p{color:#666;margin:0;}' +
-      '#pobocky-sekce .pbg{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:1200px;margin:0 auto;align-items:stretch;}' +
+      '#pobocky-sekce .pbg{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;max-width:1200px;margin:0 auto;align-items:stretch;justify-content:center;}' +
       '@media(max-width:900px){#pobocky-sekce .pbg{grid-template-columns:1fr;}}' +
-      '#pobocky-sekce .pbk{background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.08);display:flex;flex-direction:column;}' +
+      '#pobocky-sekce .pbk{background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.08);display:flex;flex-direction:column;max-width:450px;margin:0 auto;}' +
       '#pobocky-sekce .pbi{padding:24px;flex:1 0 auto;}' +
       '#pobocky-sekce .pbi h3{font-size:1.4em;font-weight:700;color:#1a1a1a;margin:0 0 8px;}' +
       '#pobocky-sekce .pbi .pp{color:#555;font-size:.9em;margin:0 0 14px;line-height:1.5;}' +
@@ -263,14 +263,8 @@
           '<span class="pa">📍 Vlčkovická 223/1a, Plačice, 500 04</span>' +
           '<div class="po"><strong>Otevírací doba:</strong>Po – St – Pá 8:00 – 16:00, Út – Čt 10:00 – 18:00</div>' +
         '</div><div class="pbm"><iframe src="https://maps.google.com/maps?q=5QVH%2B586%20Hradec%20Kr%C3%A1lov%C3%A9&t=m&z=15&output=embed&iwloc=near" allowfullscreen loading="lazy"></iframe></div></div>' +
-        '<div class="pbk"><div class="pbi">' +
-          '<h3>Bratislava</h3><p class="pp">Výdejní místo.</p>' +
-          '<span class="pa">📍 Stará Vajnorská, 831 04</span>' +
-          '<div class="po"><strong>Otevírací doba:</strong>Dle telefonické domluvy.</div>' +
-        '</div><div class="pbm"><iframe src="https://maps.google.com/maps?ll=48.18784,17.175716&z=11&t=m&hl=cs&gl=SK&mapclient=embed&q=Star%C3%A1+Vajnorsk%C3%A1+Bratislava+Slovensko&output=embed" allowfullscreen loading="lazy"></iframe></div></div>' +
       '</div>';
     vloz(pobocky);
-
     // =============================================
     // 5. POPTÁVKOVÝ FORMULÁŘ
     // =============================================
