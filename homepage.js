@@ -48,9 +48,9 @@
         '<p>Firma BiosImport s.r.o. se zabývá dovozem repasovaných japonských malotraktorů osvědčených tradičních značek Kubota, Iseki, Yanmar. K malotraktorům nabízíme i prodej příslušenství od renomovaných výrobců.<br>Provozovny firmy se nacházejí v obci Herálec u Humpolce, 9km od sjezdu dálnice D1 (exit 90) a v Hradci Králové.</p>' +
       '</div>' +
       '<div class="ofoto">' +
-        '<img src="https://www.biosimport.cz/wp-content/uploads/2024/09/IMG_0189.jpg" alt="Malotraktor">' +
-        '<img src="https://www.biosimport.cz/wp-content/uploads/2025/03/IMG_9395.jpeg" alt="Repase">' +
-        '<img src="https://www.biosimport.cz/wp-content/uploads/2025/01/IMG_5212.jpg" alt="Servis">' +
+        '<img src="/user/documents/upload/prodej_malotraktoru_bios_import.png" alt="Malotraktor">' +
+        '<img src="/user/documents/upload/repase_malotraktoru_biosimport.png" alt="Repase">' +
+        '<img src="/user/documents/upload/zaruka_a_servis_malotraktoru_biosimport.png" alt="Servis">' +
       '</div>' +
       '<div class="osloupce">' +
         '<div class="osloupec">' +
