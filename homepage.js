@@ -293,7 +293,7 @@
       '#poptavka-sekce .fg input:focus,#poptavka-sekce .fg textarea:focus{border-color:#f5a623;outline:none;background:#fff;}' +
       '#poptavka-sekce .fg textarea{min-height:120px;resize:vertical;}' +
       '#poptavka-sekce .souhlas{display:flex;align-items:flex-start;gap:8px;font-size:.88em;color:#555;margin:14px 0;}' +
-      '#poptavka-sekce .souhlas input{margin-top:2px;flex-shrink:0;}' +
+      '#poptavka-sekce .souhlas input[type="checkbox"]{position:static!important;width:16px!important;height:16px!important;clip:auto!important;overflow:visible!important;margin:2px 0 0!important;padding:0!important;opacity:1!important;appearance:auto!important;-webkit-appearance:auto!important;accent-color:#f5a623!important;flex-shrink:0!important;}' +
       '#poptavka-sekce .btn-send{width:100%;background:#f5a623;color:#1a1a1a;font-weight:700;font-size:1em;padding:16px;border:none;border-radius:10px;cursor:pointer;text-transform:uppercase;letter-spacing:.5px;font-family:inherit;text-align:center;}' +
       '#poptavka-sekce .btn-send:hover{background:#d4891a;}' +
       '#poptavka-sekce .uspech{display:none;text-align:center;padding:40px 20px;color:#2d7a2d;font-weight:600;font-size:1.1em;}' +
