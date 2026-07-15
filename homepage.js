@@ -313,7 +313,7 @@
         '</div>' +
         '<div class="pf">' +
           '<div class="uspech" id="p-uspech">✅ Děkujeme! Poptávka odeslána. Ozveme se co nejdříve.</div>' +
-          '<form id="p-form" action="https://formspree.io/f/mbdazjlz" method="POST">' +
+          '<form id="p-form" action="https://formspree.io/f/xvzegyyr" method="POST">' +
             '<div class="fg"><label>Jméno a příjmení</label><input type="text" name="jmeno" placeholder="Jan Novák" required></div>' +
             '<div class="fg"><label>E-mail</label><input type="email" name="email" placeholder="jannovak@gmail.com" required></div>' +
             '<div class="fg"><label>Mobil</label><input type="tel" name="mobil" placeholder="+420 123 456 789"></div>' +
@@ -330,7 +330,7 @@
       e.preventDefault();
       var btn = this.querySelector('.btn-send');
       btn.textContent = 'Odesílám...'; btn.disabled = true;
-      fetch('https://formspree.io/f/mbdazjlz', {
+      fetch('https://formspree.io/f/xvzegyyr', {
         method:'POST', body:new FormData(this), headers:{'Accept':'application/json'}
       }).then(function(r) {
         if (r.ok) { document.getElementById('p-form').style.display='none'; document.getElementById('p-uspech').style.display='block'; }
