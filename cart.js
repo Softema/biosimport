@@ -434,6 +434,14 @@
     }
 
     addEmptySections();
+    
+     // ══ BÍLÉ POZADÍ ZA OBRÁZKEM PRODUKTU (JS vynucení, přebije i proměnné šablony) ══
+    function fixProductImageBg() {
+      document.querySelectorAll('.cart-p-image, .cart-p-image a, .cart-p-image img').forEach(function(el) {
+        el.style.setProperty('background', '#fff', 'important');
+      });
+    }
+    fixProductImageBg();
 
     // Po AJAX refreshi (odebrání produktu) Shoptet překreslí košík – sledujeme změny
     var observer = new MutationObserver(function() {
