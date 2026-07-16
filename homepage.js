@@ -252,6 +252,7 @@
       '#pobocky-sekce .pbm iframe{display:block;width:100%;height:200px;border:0;margin:0;padding:0;}' +
       '</style>' +
       '<div class="ph"><h2>Navštivte naše pobočky</h2><p>Vyzkoušejte si naše traktory osobně</p></div>' +
+      '<div style="max-width:1100px;margin:0 auto 24px;background:#fff3e0;border-left:3px solid #f5a623;padding:12px 16px;font-size:.9em;color:#555;border-radius:6px;">📞 Před osobní návštěvou si prosím telefonicky ověřte dostupnost zboží na dané pobočce.</div>' +
       '<div class="pbg">' +
         '<div class="pbk"><div class="pbi">' +
           '<h3>Herálec</h3><p class="pp">Pobočka a výdejní místo. Malotraktory, příslušenství a servis.</p>' +
