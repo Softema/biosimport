@@ -58,6 +58,12 @@
         .cart-inner.cart-empty .empty-cart-boxes .col-md-4 {
           flex: 0 0 100% !important;
         }
+        /* Bílé pozadí za obrázkem produktu (oprava průhledných PNG fotek) */
+      .cart-p-image,
+      .cart-p-image a,
+      .cart-p-image img {
+        background: #fff !important;
+      }
       }
 
       .cart-inner.cart-empty .empty-cart-boxes h3 {
