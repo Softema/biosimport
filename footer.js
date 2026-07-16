@@ -83,7 +83,6 @@
             '<div class="kontakt-item"><span class="ico">📞</span><div><a href="tel:+420735135242">+420 735 135 242</a><br>Prodej malotraktorů</div></div>' +
             '<div class="kontakt-item"><span class="ico">📞</span><div><a href="tel:+420735199881">+420 735 199 881</a><br>Prodej příslušenství, zákaznický servis</div></div>' +
             '<div class="kontakt-item"><span class="ico">✉</span><div><a href="mailto:info@biosimport.cz">info@biosimport.cz</a></div></div>' +
-            '<div class="kontakt-upoz" style="margin-top:14px;">📞 Před osobní návštěvou si prosím telefonicky ověřte dostupnost zboží na dané pobočce.</div>' +
           '</div>' +
         '</div>' +
 
