@@ -451,3 +451,13 @@ a.badge[href*="firmy.cz"]:hover {
         flex-direction: column-reverse !important;
     }
 }
+/* ============================================================
+   CENA – doplnit "bez DPH" k hlavní ceně
+   ============================================================ */
+
+.price-final-holder::after {
+    content: " bez DPH";
+    font-size: 0.6em;
+    font-weight: 400;
+    color: #888888;
+}
