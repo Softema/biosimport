@@ -467,3 +467,18 @@ a.badge[href*="firmy.cz"]:hover {
     font-weight: 400;
     color: #888888;
 }
+
+/* ============================================================
+   TLAČÍTKO DO KOŠÍKU + POČÍTADLO – narovnat pod sebe na mobilu
+   ============================================================ */
+
+@media (max-width: 768px) {
+    .p-to-cart-block {
+        flex-direction: column !important;
+        align-items: stretch !important;
+        gap: 12px !important;
+    }
+    .p-to-cart-block > * {
+        width: 100% !important;
+    }
+}
