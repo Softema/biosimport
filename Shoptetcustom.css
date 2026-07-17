@@ -440,3 +440,14 @@ a.badge[href*="firmy.cz"]:hover {
     background-color: #388e3c !important;
     color: #ffffff !important;
 }
+
+/* ============================================================
+   HOMEPAGE BANNERY – prohodit pořadí Bagry/Příslušenství JEN na mobilu
+   ============================================================ */
+
+@media (max-width: 767px) {
+    .next-to-carousel-banners {
+        display: flex !important;
+        flex-direction: column-reverse !important;
+    }
+}
