@@ -502,6 +502,10 @@ a.badge[href*="firmy.cz"]:hover {
         flex-direction: column !important;
         align-items: stretch !important;
         gap: 12px !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
     }
     .p-to-cart-block > * {
         width: 100% !important;
