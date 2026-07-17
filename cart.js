@@ -146,13 +146,15 @@
       }
 
       /* Obrázek produktu */
-      .cart-table .cart-p-image img {
-        width: 72px !important;
-        height: 72px !important;
-        object-fit: cover !important;
-        border-radius: 10px !important;
-        border: 1px solid #f0f0f0 !important;
-      }
+      @media (min-width: 769px) {
+  .cart-table .cart-p-image img {
+    width: 72px !important;
+    height: 72px !important;
+    object-fit: cover !important;
+    border-radius: 10px !important;
+    border: 1px solid #f0f0f0 !important;
+  }
+}
 
       /* Název produktu */
       .cart-table .p-name a.main-link {
