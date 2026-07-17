@@ -487,7 +487,10 @@ a.badge[href*="firmy.cz"]:hover {
    ============================================================ */
 
 @media (max-width: 768px) {
-    .products.products-inline .product {
+    .products.products-inline:not(.products-top) .product {
         width: calc(50% - 8px) !important;
+    }
+    .products.products-inline.products-top .product {
+        width: 100% !important;
     }
 }
