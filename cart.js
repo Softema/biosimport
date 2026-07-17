@@ -125,6 +125,16 @@
 
 
 @media (min-width: 769px) {
+ /* Název produktu */
+      .cart-table .p-name a.main-link {
+        font-weight: 700 !important;
+        color: #1a1a1a !important;
+        text-decoration: none !important;
+        font-size: 0.97em !important;
+        line-height: 1.4 !important;
+        transition: color 0.15s !important;
+      }
+      .cart-table .p-name a.main-link:hover { color: #f5a623 !important; }
       /* ══ TABULKA S PRODUKTEM ══ */
 
       .cart-table {
