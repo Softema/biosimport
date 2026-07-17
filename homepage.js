@@ -142,7 +142,7 @@
       '#recenze-sekce .rh h2{font-size:2.2em;font-weight:800;color:#1a1a1a;margin:0;}' +
       '#recenze-sekce .rwrap{max-width:1100px;margin:0 auto;padding:0 10px;}' +
       '#recenze-sekce .rpage{display:none;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;opacity:1;transition:opacity .35s ease;}' +
-      '@media(max-width:900px){#recenze-sekce .rpage{grid-template-columns:1fr;}}' +
+      '@media(max-width:900px){#recenze-sekce .rpage{grid-template-columns:1fr!important;}}' +
       '#recenze-sekce .rk{background:#fff;border-radius:12px;padding:24px;box-shadow:0 2px 12px rgba(0,0,0,.07);transition:box-shadow .25s,transform .25s;}' +
       '#recenze-sekce .rk:hover{box-shadow:0 8px 28px rgba(0,0,0,.13);transform:translateY(-3px);}' +
       '#recenze-sekce .rktop{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px;}' +
