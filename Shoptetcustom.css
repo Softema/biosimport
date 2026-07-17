@@ -302,7 +302,32 @@ main.content {
     font-size: 0.85em !important;
     color: #666 !important;
 }
-
+@media (max-width: 768px) {
+    .benefitBanner {
+        flex-wrap: wrap !important;
+        border-radius: 0 !important;
+        margin-top: 16px !important;
+    }
+    .benefitBanner .benefitBanner__item {
+        flex: 1 1 calc(50% - 1px) !important;
+        border-bottom: 1px solid #f0f0f0 !important;
+        padding: 10px 14px !important;
+    }
+    .benefitBanner .benefitBanner__item:nth-last-child(-n+2) {
+        border-bottom: none !important;
+    }
+    .benefitBanner__picture {
+        width: 40px !important;
+        height: 40px !important;
+        min-width: 40px !important;
+        margin-bottom: 4px !important;
+    }
+    .benefitBanner__picture img,
+    .benefitBanner__img {
+        width: 40px !important;
+        height: 40px !important;
+    }
+}
 
 /* ============================================================
    FORMULÁŘE – focus
