@@ -112,6 +112,18 @@
         font-size: 1.1em !important;
       }
 
+      /* Název produktu */
+      .cart-table .p-name a.main-link {
+        font-weight: 700 !important;
+        color: #1a1a1a !important;
+        text-decoration: none !important;
+        font-size: 0.97em !important;
+        line-height: 1.4 !important;
+        transition: color 0.15s !important;
+      }
+      .cart-table .p-name a.main-link:hover { color: #f5a623 !important; }
+
+
 @media (min-width: 769px) {
       /* ══ TABULKA S PRODUKTEM ══ */
 
@@ -157,17 +169,7 @@
   }
 }
 
-      /* Název produktu */
-      .cart-table .p-name a.main-link {
-        font-weight: 700 !important;
-        color: #1a1a1a !important;
-        text-decoration: none !important;
-        font-size: 0.97em !important;
-        line-height: 1.4 !important;
-        transition: color 0.15s !important;
-      }
-      .cart-table .p-name a.main-link:hover { color: #f5a623 !important; }
-
+      
       /* Počet – odebrat stínování */
       .cart-table .p-quantity input,
       .cart-table .p-quantity input[type="text"],
