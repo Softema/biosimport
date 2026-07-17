@@ -48,7 +48,7 @@
         padding: 0 !important;
         float: none !important;
       }
-
+ 
       @media (max-width: 768px) {
         .cart-inner.cart-empty .empty-cart-boxes {
           flex-wrap: wrap !important;
@@ -112,6 +112,7 @@
         font-size: 1.1em !important;
       }
 
+@media (min-width: 769px) {
       /* ══ TABULKA S PRODUKTEM ══ */
 
       .cart-table {
@@ -259,6 +260,8 @@
       .cart-table button.remove-item .sr-only {
         display: none !important;
       }
+      }
+
 
       /* ══ CELKOVÁ CENA ══ */
       .price-wrapper {
