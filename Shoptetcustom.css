@@ -494,3 +494,11 @@ a.badge[href*="firmy.cz"]:hover {
         width: 100% !important;
     }
 }
+@media (max-width: 768px) {
+    .pr-action {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 10px !important;
+    }
+}
