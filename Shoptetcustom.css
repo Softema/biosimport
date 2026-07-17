@@ -461,3 +461,9 @@ a.badge[href*="firmy.cz"]:hover {
     font-weight: 400;
     color: #888888;
 }
+.product .price.price-final::after {
+    content: " bez DPH";
+    font-size: 0.6em;
+    font-weight: 400;
+    color: #888888;
+}
