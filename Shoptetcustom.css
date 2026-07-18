@@ -527,3 +527,11 @@ a.badge[href*="firmy.cz"]:hover {
     }
    
 }
+a.cart-count.btn.toggle-window {
+    background-color: transparent !important;
+    border-color: transparent !important;
+    color: #f5a623 !important;
+}
+a.cart-count.btn.toggle-window i[data-testid="headerCartCount"] {
+    top: 32px !important;
+}
