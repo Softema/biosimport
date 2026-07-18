@@ -534,3 +534,8 @@ a.cart-count.btn.toggle-window {
 a.cart-count.btn.toggle-window i[data-testid="headerCartCount"] {
     top: 32px !important;
 }
+@media (max-width: 768px) {
+    .cart-widget-product-unit {
+        margin-left: 10px !important;
+    }
+}
