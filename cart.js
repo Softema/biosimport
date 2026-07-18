@@ -404,6 +404,11 @@
         .next-step--cart a.next-step-back,
         .next-step--cart a.next-step-forward { flex: none !important; width: 100% !important; }
       }
+      @media (max-width: 768px) {
+    .p-quantity .amount-spinner {
+        margin-left: 10px !important;
+    }
+}
     `;
     document.head.appendChild(style);
 
