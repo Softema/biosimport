@@ -539,3 +539,13 @@ a.cart-count.btn.toggle-window i[data-testid="headerCartCount"] {
         margin-left: 10px !important;
     }
 }
+@media (max-width: 768px) {
+    a.cart-count.btn.toggle-window {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+    a.cart-count.btn.toggle-window::before {
+        font-size: 26px !important;
+    }
+}
