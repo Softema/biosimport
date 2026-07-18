@@ -423,8 +423,7 @@ a:hover, a:focus { color: #d4891a !important; }
 .header-cart a,
 .header-cart .btn,
 [class*="header-cart"] a,
-[class*="header-cart"] .btn,
-[class*="cart"] > a {
+[class*="header-cart"] .btn {
     display: inline-flex !important;
     align-items: center !important;
     justify-content: center !important;
