@@ -399,17 +399,23 @@
         border: none !important;
         background: transparent !important;
       }
+   .p-quantity .amount-spinner {
+        box-shadow: none !important;
+        border: none !important;
+        background: transparent !important;
+      }
+      @media (max-width: 768px) {
+          .p-quantity .amount-spinner {
+              margin-left: 10px !important;
+          }
+      }
       @media (max-width: 500px) {
         .next-step.next-step--cart { flex-direction: column !important; }
         .next-step--cart a.next-step-back,
         .next-step--cart a.next-step-forward { flex: none !important; width: 100% !important; }
       }
-      @media (max-width: 768px) {
-    .p-quantity .amount-spinner {
-        margin-left: 10px !important;
-    }
-}
     `;
+
     document.head.appendChild(style);
 
     // ══ SKRYTÍ JÁRA CIMRMAN (záloha pro starší prohlížeče bez :has()) ══
