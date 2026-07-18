@@ -375,12 +375,7 @@ select:focus {
    KOŠÍK – ikona počítadlo
    ============================================================ */
 
-.cart-count,
-.cart-count-number {
-    background-color: #f5a623 !important;
-    border-color: #f5a623 !important;
-    color: #1a1a1a !important;
-}
+
 
 /* ============================================================
    CENOVÝ SLIDER
