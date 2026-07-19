@@ -545,7 +545,6 @@ a.cart-count.btn.toggle-window i[data-testid="headerCartCount"] {
         align-items: center !important;
         justify-content: center !important;
     }
-@media (max-width: 768px) {
     a.cart-count.btn.toggle-window::before {
         font-size: 26px !important;
     }
